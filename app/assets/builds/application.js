@@ -18362,10 +18362,24 @@ var polling_controller_default = class extends Controller {
   }
 };
 
+// app/javascript/controllers/modal_controller.js
+var modal_controller_default = class extends Controller {
+  static values = { id: String };
+  open() {
+    const modal = document.getElementById(this.idValue || "create-vm-modal");
+    if (modal && typeof modal.showModal === "function") modal.showModal();
+  }
+  close() {
+    const modal = document.getElementById(this.idValue || "create-vm-modal");
+    if (modal) modal.close();
+  }
+};
+
 // app/javascript/controllers/index.js
 var application = Application.start();
 application.register("terminal", terminal_controller_default);
 application.register("polling", polling_controller_default);
+application.register("modal", modal_controller_default);
 /*! Bundled license information:
 
 @hotwired/turbo/dist/turbo.es2017-esm.js:

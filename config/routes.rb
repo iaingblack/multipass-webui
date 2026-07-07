@@ -8,6 +8,24 @@ Rails.application.routes.draw do
   root "hosts#show", as: :host
   get "tree", to: "hosts#tree"
 
+  # VM resources
+  resources :vms, only: %i[index show create destroy], param: :name do
+    member do
+      post :start
+      post :stop
+      post :suspend
+      post :recover
+      post :clone
+      get  :resource_config
+      patch :resource_config, to: "vms#update_resource_config"
+    end
+    collection do
+      post :start_all
+      post :stop_all
+      post :purge
+    end
+  end
+
   # Spike routes — temporary, used to prove ActionCable + PTY works.
   # Will be removed once the real Vms::ConsoleTab is wired up.
   get "spike", to: "spike#index"

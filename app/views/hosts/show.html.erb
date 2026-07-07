@@ -1,5 +1,28 @@
 <div class="p-6 fade-in">
-  <h1 class="text-lg font-semibold mb-4">Host Dashboard</h1>
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold">Host Dashboard</h1>
+    <div class="flex gap-2">
+      <button data-controller="modal"
+              data-modal-id-value="create-vm-modal"
+              data-action="click->modal#open"
+              class="px-3 py-1.5 rounded text-sm"
+              style="background-color: var(--accent); color: white;">
+        Create VM
+      </button>
+      <%= button_to "Start All", start_all_vms_path, method: :post,
+            class: "px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--bg-hover); color: var(--text-primary);" %>
+      <%= button_to "Stop All", stop_all_vms_path, method: :post,
+            class: "px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--bg-hover); color: var(--text-primary);" %>
+      <%= button_to "Purge", purge_vms_path, method: :post,
+            class: "px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--danger); color: white;",
+            data: { turbo_confirm: "Purge all deleted VMs?" } %>
+    </div>
+  </div>
+
+  <%= render "create_vm_modal" %>
 
   <% if @host_resources %>
     <div class="grid grid-cols-3 gap-4 mb-6">

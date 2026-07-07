@@ -1,0 +1,63 @@
+<%# Create VM modal — opens on Create VM button click.
+   Form posts to /vms which calls Multipass::Client#launch_vm.
+   Defaults from VmDefault.current. %>
+<dialog id="create-vm-modal" class="rounded-lg p-0"
+        style="background-color: var(--bg-surface); color: var(--text-primary); border: 1px solid var(--border); max-width: 500px; width: 90vw;">
+  <div class="p-6">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-semibold">Create VM</h2>
+      <button type="button"
+              onclick="document.getElementById('create-vm-modal').close()"
+              class="text-xl leading-none hover:opacity-70"
+              style="color: var(--text-secondary);">×</button>
+    </div>
+
+    <%= form_with url: vms_path, method: :post, local: true, class: "space-y-4" do |f| %>
+      <div>
+        <%= f.label :name, "Name", class: "block text-sm mb-1" %>
+        <%= f.text_field :name, placeholder: "auto-generated if blank",
+              class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+
+      <div>
+        <%= f.label :release, "Ubuntu release", class: "block text-sm mb-1" %>
+        <%= f.select :release, Multipass::Constants::UBUNTU_RELEASES,
+              { selected: Multipass::Constants::DEFAULT_UBUNTU_RELEASE },
+              class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+
+      <div class="grid grid-cols-3 gap-3">
+        <div>
+          <%= f.label :cpus, "CPUs", class: "block text-sm mb-1" %>
+          <%= f.number_field :cpus, value: VmDefault.current.cpus, min: Multipass::Constants::MIN_CPU_CORES,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+        <div>
+          <%= f.label :memory_mb, "RAM (MB)", class: "block text-sm mb-1" %>
+          <%= f.number_field :memory_mb, value: VmDefault.current.memory_mb, min: Multipass::Constants::MIN_RAM_MB,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+        <div>
+          <%= f.label :disk_gb, "Disk (GB)", class: "block text-sm mb-1" %>
+          <%= f.number_field :disk_gb, value: VmDefault.current.disk_gb, min: Multipass::Constants::MIN_DISK_GB,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+      </div>
+
+      <div class="flex justify-end gap-2 pt-2">
+        <button type="button"
+                onclick="document.getElementById('create-vm-modal').close()"
+                class="px-3 py-1.5 rounded text-sm"
+                style="background-color: var(--bg-hover); color: var(--text-primary);">Cancel</button>
+        <%= f.submit "Create",
+              class: "px-3 py-1.5 rounded text-sm",
+              style: "background-color: var(--accent); color: white;" %>
+      </div>
+    <% end %>
+  </div>
+</dialog>

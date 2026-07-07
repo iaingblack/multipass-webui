@@ -1,0 +1,83 @@
+<div class="p-6 fade-in">
+  <div class="flex items-start justify-between mb-6">
+    <div class="flex items-center gap-3">
+      <%# Inline status dot - avoid cross-controller partial %>
+      <% color = case @vm.state
+         when "Running" then "var(--success)"
+         when "Suspended" then "var(--warning)"
+         when "Deleted" then "var(--danger)"
+         when "Stopped" then "var(--muted)"
+         else "var(--text-secondary)"
+         end %>
+      <span class="w-2 h-2 rounded-full inline-block"
+            style="background-color: <%= color %>;"></span>
+      <h1 class="text-xl font-semibold"><%= @vm.name %></h1>
+      <span class="text-sm" style="color: var(--text-secondary);"><%= @vm.state %></span>
+    </div>
+    <div class="flex gap-2">
+      <% if @vm.state == "Running" %>
+        <%= button_to "Stop", stop_vm_path(@vm.name), method: :post,
+              class: "px-3 py-1.5 rounded text-sm",
+              style: "background-color: var(--warning); color: white;" %>
+        <%= button_to "Suspend", suspend_vm_path(@vm.name), method: :post,
+              class: "px-3 py-1.5 rounded text-sm",
+              style: "background-color: var(--bg-hover); color: var(--text-primary);" %>
+      <% elsif @vm.state == "Stopped" || @vm.state == "Suspended" %>
+        <%= button_to "Start", start_vm_path(@vm.name), method: :post,
+              class: "px-3 py-1.5 rounded text-sm",
+              style: "background-color: var(--success); color: white;" %>
+      <% elsif @vm.state == "Deleted" %>
+        <%= button_to "Recover", recover_vm_path(@vm.name), method: :post,
+              class: "px-3 py-1.5 rounded text-sm",
+              style: "background-color: var(--success); color: white;" %>
+      <% end %>
+
+      <% if @vm.state == "Deleted" %>
+        <%= button_to "Purge", vm_path(@vm.name, purge: true), method: :delete,
+              class: "px-3 py-1.5 rounded text-sm",
+              style: "background-color: var(--danger); color: white;",
+              data: { turbo_confirm: "Purge #{@vm.name} permanently?" } %>
+      <% else %>
+        <%= button_to "Delete", vm_path(@vm.name), method: :delete,
+              class: "px-3 py-1.5 rounded text-sm",
+              style: "background-color: var(--danger); color: white;",
+              data: { turbo_confirm: "Delete #{@vm.name}?" } %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 gap-6">
+    <!-- Properties -->
+    <div class="rounded p-4" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+      <h2 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color: var(--text-secondary);">Properties</h2>
+      <dl class="space-y-2 text-sm">
+        <% properties = [
+          ["State", @vm.state],
+          ["IPv4", @vm.ipv4.first || "—"],
+          ["Release", @vm.release || "—"],
+          ["CPUs", @vm.cpus || "—"],
+          ["Memory", @vm.memory_usage.present? ? "#{@vm.memory_usage} / #{@vm.memory_total}" : "—"],
+          ["Disk", @vm.disk_usage.present? ? "#{@vm.disk_usage} / #{@vm.disk_total}" : "—"],
+          ["Snapshots", @vm.snapshots.to_s],
+          ["Image hash", @vm.image_hash || "—"]
+        ] %>
+        <% properties.each do |label, value| %>
+          <div class="flex justify-between">
+            <dt style="color: var(--text-secondary);"><%= label %></dt>
+            <dd class="font-mono"><%= value %></dd>
+          </div>
+        <% end %>
+      </dl>
+    </div>
+
+    <!-- Quick actions -->
+    <div class="rounded p-4" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+      <h2 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color: var(--text-secondary);">Actions</h2>
+      <div class="space-y-2 text-sm">
+        <%= link_to "Open terminal (spike)", spike_path,
+              class: "block px-3 py-1.5 rounded hover:bg-[var(--bg-hover)]",
+              style: "color: var(--text-secondary);" %>
+      </div>
+    </div>
+  </div>
+</div>

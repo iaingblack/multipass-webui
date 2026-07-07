@@ -38,12 +38,13 @@
       <div class="px-2 mb-1 text-xs uppercase tracking-wide"
            style="color: var(--text-secondary);">Instances</div>
       <% @vms.each do |vm| %>
-        <a href="#"
-           class="flex items-center gap-2 px-2 py-1 rounded text-sm hover:bg-[var(--bg-hover)]"
-           title="<%= vm.state %>">
+        <%= link_to vm_path(vm.name),
+              data: { turbo_frame: "_top" },
+              class: "flex items-center gap-2 px-2 py-1 rounded text-sm hover:bg-[var(--bg-hover)] #{request.path == vm_path(vm.name) ? 'bg-[var(--bg-hover)]' : ''}",
+              title: "<%= vm.state %>" do %>
           <%= render "status_dot", state: vm.state %>
           <span><%= vm.name %></span>
-        </a>
+        <% end %>
       <% end %>
     </div>
   <% else %>

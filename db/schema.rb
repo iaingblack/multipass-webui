@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_07_201025) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_07_201752) do
+  create_table "events", id: { type: :string, limit: 32 }, force: :cascade do |t|
+    t.string "action", null: false
+    t.string "actor", null: false
+    t.string "category", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.text "detail"
+    t.string "endpoint"
+    t.json "payload"
+    t.string "resource"
+    t.string "result"
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["actor", "created_at"], name: "index_events_on_actor_and_created_at"
+    t.index ["category", "created_at"], name: "index_events_on_category_and_created_at"
+    t.index ["created_at"], name: "index_events_on_created_at"
+    t.index ["resource", "created_at"], name: "index_events_on_resource_and_created_at"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.string "name", null: false
+    t.integer "position", default: 0, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["name"], name: "index_groups_on_name", unique: true
+    t.index ["position"], name: "index_groups_on_position"
+  end
+
   create_table "sessions", force: :cascade do |t|
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.datetime "expires_at", null: false
@@ -35,6 +61,16 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_201025) do
     t.index ["id"], name: "index_settings_on_id", unique: true
   end
 
+  create_table "vm_assignments", force: :cascade do |t|
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.integer "group_id"
+    t.boolean "is_template", default: false, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.string "vm_name", null: false
+    t.index ["group_id"], name: "index_vm_assignments_on_group_id"
+    t.index ["vm_name"], name: "index_vm_assignments_on_vm_name", unique: true
+  end
+
   create_table "vm_defaults", force: :cascade do |t|
     t.integer "cpus", default: 2, null: false
     t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
@@ -44,4 +80,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_201025) do
     t.text "ssh_public_key"
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
   end
+
+  add_foreign_key "vm_assignments", "groups"
 end

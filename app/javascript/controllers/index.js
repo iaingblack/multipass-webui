@@ -3,9 +3,11 @@
 import { Application } from "@hotwired/stimulus"
 import TerminalController from "./terminal_controller"
 import PollingController from "./polling_controller"
+import ModalController from "./modal_controller"
 
 const application = Application.start()
 application.register("terminal", TerminalController)
 application.register("polling", PollingController)
+application.register("modal", ModalController)
 
 export { application }
