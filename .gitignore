@@ -1,0 +1,21 @@
+# Rails
+/storage/*
+!/storage/.keep
+/tmp/*
+!/tmp/.keep
+/log/*
+!/log/.keep
+config/master.key
+config/credentials/*.key
+
+# Node
+/node_modules
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
+# OS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
