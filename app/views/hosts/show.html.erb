@@ -1,0 +1,73 @@
+<div class="p-6 fade-in">
+  <h1 class="text-lg font-semibold mb-4">Host Dashboard</h1>
+
+  <% if @host_resources %>
+    <div class="grid grid-cols-3 gap-4 mb-6">
+      <div class="p-4 rounded" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+        <div class="text-xs uppercase tracking-wide" style="color: var(--text-secondary);">CPUs</div>
+        <div class="text-2xl font-semibold mt-1"><%= @host_resources.total_cpus %></div>
+        <div class="text-xs mt-1" style="color: var(--text-secondary);">
+          load: <%= number_with_precision(@host_resources.load_avg_1, precision: 2) %>
+        </div>
+      </div>
+      <div class="p-4 rounded" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+        <div class="text-xs uppercase tracking-wide" style="color: var(--text-secondary);">Memory</div>
+        <div class="text-2xl font-semibold mt-1">
+          <%= (host_used_memory_gb).round(1) %> / <%= (host_total_memory_gb).round(1) %> GB
+        </div>
+        <div class="text-xs mt-1" style="color: var(--text-secondary);">used / total</div>
+      </div>
+      <div class="p-4 rounded" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+        <div class="text-xs uppercase tracking-wide" style="color: var(--text-secondary);">Disk</div>
+        <div class="text-2xl font-semibold mt-1">
+          <%= (host_used_disk_gb).round(0) %> / <%= (host_total_disk_gb).round(0) %> GB
+        </div>
+        <div class="text-xs mt-1" style="color: var(--text-secondary);">used / total</div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-5 gap-3 mb-6">
+    <% vm_counts.each do |state, count| %>
+      <div class="p-3 rounded" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+        <div class="text-xs uppercase tracking-wide" style="color: var(--text-secondary);"><%= state %></div>
+        <div class="text-xl font-semibold mt-1"><%= count %></div>
+      </div>
+    <% end %>
+  </div>
+
+  <h2 class="text-sm font-semibold uppercase tracking-wide mb-2" style="color: var(--text-secondary);">
+    Instances
+  </h2>
+  <% if @vms.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2 font-medium">Name</th>
+            <th class="text-left px-3 py-2 font-medium">State</th>
+            <th class="text-left px-3 py-2 font-medium">IPv4</th>
+            <th class="text-left px-3 py-2 font-medium">Release</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @vms.each do |vm| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2"><%= vm.name %></td>
+              <td class="px-3 py-2 flex items-center gap-2">
+                <%= render "status_dot", state: vm.state %>
+                <%= vm.state %>
+              </td>
+              <td class="px-3 py-2"><%= vm.ipv4.first || "—" %></td>
+              <td class="px-3 py-2"><%= vm.release %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No VMs found. Try running <code>multipass launch</code> to create one.
+    </div>
+  <% end %>
+</div>

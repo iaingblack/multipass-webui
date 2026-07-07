@@ -1,0 +1,11 @@
+<%# Status dot for a VM state. Color matches Go StatusDot.vue. %>
+<% color = case state
+   when "Running" then "var(--success)"
+   when "Suspended" then "var(--warning)"
+   when "Deleted" then "var(--danger)"
+   when "Stopped" then "var(--muted)"
+   else "var(--text-secondary)"
+   end %>
+<span class="w-2 h-2 rounded-full inline-block"
+      style="background-color: <%= color %>;"
+      title="<%= state %>"></span>

@@ -1,10 +1,53 @@
-/*
- * This is a manifest file that'll be compiled into application.css.
- *
- * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
- * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
- * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
- * depending on specificity.
- *
- * Consider organizing styles into separate files for maintainability.
- */
+@import "tailwindcss";
+
+/* Dark theme palette — ported verbatim from the Go version's
+   frontend/src/assets/main.css. CSS custom properties so utility
+   classes like bg-[var(--bg-surface)] can pick them up directly.
+   Matches the Proxmox/vSphere infrastructure-tool aesthetic. */
+:root {
+  --bg-primary:    #1a1a2e;   /* deep navy main background */
+  --bg-secondary:  #16213e;   /* sidebar and cards */
+  --bg-surface:    #1e293b;   /* panels, modals */
+  --bg-hover:      #2a3a5c;   /* hover states */
+  --border:        #334155;   /* subtle borders */
+  --text-primary:  #e2e8f0;   /* main text */
+  --text-secondary:#94a3b8;   /* muted text */
+  --accent:        #3b82f6;   /* blue accent */
+  --success:       #22c55e;   /* running status */
+  --warning:       #eab308;   /* suspended status */
+  --danger:        #ef4444;   /* delete, errors */
+  --muted:         #64748b;   /* stopped status */
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+}
+
+/* Thin dark scrollbars — matches the upstream aesthetic */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 4px;
+}
+
+/* Status dot pulse for transitional states (Starting, Suspending) */
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.9); }
+}
+.pulse-dot { animation: pulse-dot 1.4s ease-in-out infinite; }
+
+/* Fade transition for panel swaps */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.fade-in { animation: fade-in 150ms ease-out; }
