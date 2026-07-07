@@ -55,30 +55,45 @@ module Terminals
       @master, @slave = PTY.open
       # Set a reasonable default winsize — matches Go pty_store_unix.go:34.
       @slave.winsize = [ 40, 120 ]
+      Rails.logger.info("[terminal] spawning multipass shell #{@vm_name} for session #{@session_id}")
       @pid = spawn("multipass", "shell", @vm_name, in: @slave, out: @slave, err: @slave, pgroup: true)
       @slave.close
+      Rails.logger.info("[terminal] spawned pid=#{@pid}")
 
       # Reader thread: reads PTY output in 4KB chunks (matches Go's read size),
       # appends to scrollback (cap 64KB), and broadcasts to all ActionCable
       # subscribers via ActionCable.server.broadcast.
+      require "io/wait"
       @reader_thread = Thread.new do
+        chunk_count = 0
         begin
           until @closed
-            chunk = @master.read_nonblock(4096)
+            begin
+              chunk = @master.read_nonblock(4096)
+            rescue IO::WaitReadable
+              # No data yet — block up to 100ms waiting for input, then retry.
+              # wait_readable returns true when readable, nil on timeout.
+              @master.wait_readable(0.1)
+              retry unless @closed
+              break
+            end
+
             if chunk.nil? # EOF → process exited
+              Rails.logger.info("[terminal] EOF on master after #{chunk_count} chunks")
               broadcast_output("\r\n[multipass shell exited]\r\n".b)
               break
             end
+            chunk_count += 1
             append_scrollback(chunk)
             broadcast_output(chunk)
           end
-        rescue IO::WaitReadable
-          # Spurious wakeup — sleep briefly and retry. io/wait is loaded by PTY.
-          IO.select([@master], nil, nil, 0.1) until @closed
-          retry
         rescue IOError => e
           # Master closed — process exited
+          Rails.logger.info("[terminal] IOError on master after #{chunk_count} chunks: #{e.message}")
           broadcast_output("\r\n[terminal closed: #{e.message}]\r\n".b)
+        rescue StandardError => e
+          Rails.logger.error("[terminal] reader thread crashed: #{e.class}: #{e.message}")
+          raise
         ensure
           @closed = true
         end

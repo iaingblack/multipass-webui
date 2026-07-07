@@ -30,7 +30,8 @@ class TerminalChannel < ApplicationCable::Channel
     stream_from "terminal:#{@session_id}:output"
 
     # Replay scrollback on connect — matches Go's 64KB replay on WebSocket reconnect.
-    transmit(type: "scrollback", data: Base64.strict_encode64(@session.scrollback.dup))
+    # ActionCable's #transmit takes a positional payload (not kwargs).
+    transmit({ type: "scrollback", data: Base64.strict_encode64(@session.scrollback.dup) })
   end
 
   def unsubscribed
