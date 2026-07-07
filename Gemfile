@@ -45,7 +45,7 @@ gem "solid_cable"
 gem "bootsnap", require: false
 
 # Active Storage variants (used for file uploads in Phase 2 polish)
-gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 2.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
