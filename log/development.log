@@ -8136,3 +8136,506 @@ Filter chain halted as :require_login rendered or redirected
 Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "sha256_digest" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_sha256_digest" ON "api_tokens" ("sha256_digest") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" varchar(32) NOT NULL PRIMARY KEY, "action" varchar NOT NULL, "actor" varchar NOT NULL, "category" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "detail" text, "endpoint" varchar, "payload" json, "resource" varchar, "result" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_actor_and_created_at" ON "events" ("actor", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_category_and_created_at" ON "events" ("category", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_created_at" ON "events" ("created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_resource_and_created_at" ON "events" ("resource", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "groups" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "groups" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "name" varchar NOT NULL, "position" integer DEFAULT 0 NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_groups_on_name" ON "groups" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_groups_on_position" ON "groups" ("position") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "profiles" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "builtin" boolean DEFAULT FALSE, "cloud_init" varchar, "cpus" integer, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer, "group_name" varchar, "id_slug" varchar NOT NULL, "memory_mb" integer, "name" varchar NOT NULL, "network" varchar, "playbook" varchar, "release" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_profiles_on_id_slug" ON "profiles" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "schedules" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "days" json, "enabled" boolean DEFAULT TRUE, "group_name" varchar, "id_slug" varchar NOT NULL, "last_fired_at" datetime(6), "name" varchar NOT NULL, "playbook" varchar, "target_mode" varchar, "time" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_names" json) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_schedules_on_id_slug" ON "schedules" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "sessions" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "expires_at" datetime(6) NOT NULL, "ip_address" varchar, "token_hash" varchar(64) NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "user_agent" varchar) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_expires_at" ON "sessions" ("expires_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_sessions_on_token_hash" ON "sessions" ("token_hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "settings" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cloud_init_dir" varchar DEFAULT '', "cloud_init_repo" varchar DEFAULT '', "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "listen_port" integer DEFAULT 3000, "password_digest" varchar NOT NULL, "playbooks_dir" varchar DEFAULT '', "trust_proxy" boolean DEFAULT FALSE, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "username" varchar DEFAULT 'admin' NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_settings_on_id" ON "settings" ("id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_defaults" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "vm_defaults" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cpus" integer DEFAULT 2 NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer DEFAULT 8 NOT NULL, "memory_mb" integer DEFAULT 1024 NOT NULL, "ssh_private_key" text, "ssh_public_key" text, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "webhooks" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "categories" json, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "enabled" boolean DEFAULT TRUE, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "results" json, "secret" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "url" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_avm_assignments_on_vm_name" ON "avm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_avm_assignments_on_group_id" ON "avm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "avm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL, CONSTRAINT "fk_rails_13b7c3dafd"
+FOREIGN KEY ("group_id")
+  REFERENCES "groups" ("id")
+) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "vm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260707203503) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20260707203502),
+(20260707203501),
+(20260707203500),
+(20260707201752),
+(20260707201751),
+(20260707201750),
+(20260707201025),
+(20260707201024),
+(20260707201023); /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-07-07 21:04:36.204126', '2026-07-07 21:04:36.204127') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '4a0924fdaa0d74b67c5b902593d27f42c1440ed5', '2026-07-07 21:04:36.205575', '2026-07-07 21:04:36.205576') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mSetting Create (0.2ms)[0m  [1m[32mINSERT INTO "settings" ("cloud_init_dir", "cloud_init_repo", "created_at", "listen_port", "password_digest", "playbooks_dir", "trust_proxy", "updated_at", "username") VALUES ('', '', '2026-07-07 21:04:37.409229', 3000, '$2a$12$boilunwBYxjKeJFOXrcfNeopXUj10LPrSf.0ggbh2xRjTxOjA8Igy', '', FALSE, '2026-07-07 21:04:37.409229', 'admin') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mSetting Update (0.0ms)[0m  [1m[33mUPDATE "settings" SET "password_digest" = '$2a$10$Mnzl3HOJe9gGReV2oTTYaeZOCqVfdZxBBkR8rNGTNTZQ1ciuRI6Mq', "updated_at" = '2026-07-07 21:04:37.410584' WHERE "settings"."id" = 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:19:in 'block (3 levels) in <compiled>'
+  [1m[36mSetting Update (0.0ms)[0m  [1m[33mUPDATE "settings" SET "cloud_init_dir" = '/Users/iain/.passgo-web/cloud-init', "playbooks_dir" = '/Users/iain/.passgo-web/playbooks', "updated_at" = '2026-07-07 21:04:37.413045' WHERE "settings"."id" = 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:27:in 'block (3 levels) in <compiled>'
+  [1m[36mVmDefault Load (0.0ms)[0m  [1m[34mSELECT "vm_defaults".* FROM "vm_defaults" ORDER BY "vm_defaults"."id" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/vm_default.rb:7:in 'VmDefault.current'
+  [1m[36mVmDefault Create (0.0ms)[0m  [1m[32mINSERT INTO "vm_defaults" ("cpus", "created_at", "disk_gb", "memory_mb", "ssh_private_key", "ssh_public_key", "updated_at") VALUES (2, '2026-07-07 21:04:37.417188', 8, 1024, NULL, NULL, '2026-07-07 21:04:37.417188') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ app/models/vm_default.rb:7:in 'VmDefault.current'
+  [1m[36mVmDefault Update (0.0ms)[0m  [1m[33mUPDATE "vm_defaults" SET "disk_gb" = 16, "memory_mb" = 2048, "ssh_private_key" = '~/.ssh/ib_ssh', "ssh_public_key" = 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0wSRi83wxDgxdA8o34GOjYkjC/ck5UsvRO7q8vPqhs', "updated_at" = '2026-07-07 21:04:37.417808' WHERE "vm_defaults"."id" = 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:37:in 'block (3 levels) in <compiled>'
+  [1m[36mGroup Load (0.1ms)[0m  [1m[34mSELECT "groups".* FROM "groups" WHERE "groups"."name" = 'K8S' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:48:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:48:in 'block (4 levels) in <compiled>'
+  [1m[36mGroup Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "groups" WHERE "groups"."name" = 'K8S' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:48:in 'block (4 levels) in <compiled>'
+  [1m[36mGroup Create (0.1ms)[0m  [1m[32mINSERT INTO "groups" ("created_at", "name", "position", "updated_at") VALUES ('2026-07-07 21:04:37.435266', 'K8S', 0, '2026-07-07 21:04:37.435266') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:48:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:48:in 'block (4 levels) in <compiled>'
+  [1m[36mVmAssignment Load (0.0ms)[0m  [1m[34mSELECT "vm_assignments".* FROM "vm_assignments" WHERE "vm_assignments"."vm_name" = 'rootplane-hello-01' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:55:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:55:in 'block (4 levels) in <compiled>'
+  [1m[36mVmAssignment Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "vm_assignments" WHERE "vm_assignments"."vm_name" = 'rootplane-hello-01' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:55:in 'block (4 levels) in <compiled>'
+  [1m[36mVmAssignment Create (0.1ms)[0m  [1m[32mINSERT INTO "vm_assignments" ("created_at", "group_id", "is_template", "updated_at", "vm_name") VALUES ('2026-07-07 21:04:37.443211', NULL, TRUE, '2026-07-07 21:04:37.443211', 'rootplane-hello-01') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:55:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:55:in 'block (4 levels) in <compiled>'
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id_slug" = 'devops' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mProfile Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "profiles" WHERE "profiles"."id_slug" = 'devops' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mProfile Create (0.1ms)[0m  [1m[32mINSERT INTO "profiles" ("builtin", "cloud_init", "cpus", "created_at", "disk_gb", "group_name", "id_slug", "memory_mb", "name", "network", "playbook", "release", "updated_at") VALUES (FALSE, 'builtin:ansible-ready.yml', 4, '2026-07-07 21:04:37.449974', 32, NULL, 'devops', 4192, 'test', NULL, 'apt-update-upgrade.yml', '22.04', '2026-07-07 21:04:37.449974') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mProfile Load (0.0ms)[0m  [1m[34mSELECT "profiles".* FROM "profiles" WHERE "profiles"."id_slug" = 'agent-ready' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mProfile Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "profiles" WHERE "profiles"."id_slug" = 'agent-ready' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mProfile Create (0.0ms)[0m  [1m[32mINSERT INTO "profiles" ("builtin", "cloud_init", "cpus", "created_at", "disk_gb", "group_name", "id_slug", "memory_mb", "name", "network", "playbook", "release", "updated_at") VALUES (FALSE, 'builtin:agent-ready.yml', 2, '2026-07-07 21:04:37.452684', 20, 'agents', 'agent-ready', 4096, 'Agent-ready Ubuntu', NULL, NULL, '24.04', '2026-07-07 21:04:37.452684') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:60:in 'block (4 levels) in <compiled>'
+  [1m[36mApiToken Load (0.0ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" WHERE "api_tokens"."id_slug" = '40b5074453fa1b9e7b5c2b85ec9063d5' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:90:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:90:in 'block (4 levels) in <compiled>'
+  [1m[36mApiToken Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."id_slug" = '40b5074453fa1b9e7b5c2b85ec9063d5' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:90:in 'block (4 levels) in <compiled>'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."name" = 'CICD' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:90:in 'block (4 levels) in <compiled>'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."sha256_digest" = '259bc918f362bfe70fac684d9717eac355f25b778b673a1b43cbceb074f3eb76' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:90:in 'block (4 levels) in <compiled>'
+  [1m[36mApiToken Create (0.1ms)[0m  [1m[32mINSERT INTO "api_tokens" ("created_at", "id_slug", "name", "prefix", "sha256_digest", "updated_at") VALUES ('2026-04-09 10:55:18', '40b5074453fa1b9e7b5c2b85ec9063d5', 'CICD', 'pgo_76a86b6e', '259bc918f362bfe70fac684d9717eac355f25b778b673a1b43cbceb074f3eb76', '2026-07-07 21:04:37.458990') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:90:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:90:in 'block (4 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:16:in 'block (2 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1775741857-ca79e4a7' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1775741857-ca79e4a7', 'start', 'user', 'vm', '2026-04-09 13:37:37', 'command failed: exit status 2
+Stderr: start failed: The following errors occurred:
+Instance ''ansible'' is already running, but in an unknown state.
+Try to stop it first.', NULL, NULL, 'ansible', 'failed', '2026-07-07 21:04:37.466057') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1775741884-b7e6fdfa' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1775741884-b7e6fdfa', 'start', 'user', 'vm', '2026-04-09 13:38:04', NULL, NULL, NULL, 'ansible', 'success', '2026-07-07 21:04:37.468534') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1775741898-b73fa8ba' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1775741898-b73fa8ba', 'stop', 'user', 'vm', '2026-04-09 13:38:18', NULL, NULL, NULL, 'ansible', 'success', '2026-07-07 21:04:37.470534') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1775742219-c4c6b573' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1775742219-c4c6b573', 'start', 'user', 'vm', '2026-04-09 13:43:39', NULL, 'POST /api/v1/vms/ansible/start', NULL, 'ansible', 'success', '2026-07-07 21:04:37.472431') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1775742812-13fdbecd' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1775742812-13fdbecd', 'stop', 'user', 'vm', '2026-04-09 13:53:32', NULL, 'POST /api/v1/vms/ansible/stop', NULL, 'ansible', 'success', '2026-07-07 21:04:37.474277') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369090-d48f2fdb' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369090-d48f2fdb', 'stop', 'user', 'vm', '2026-04-16 19:51:30', NULL, 'POST /api/v1/vms/charitable-whipsnake/stop', NULL, 'charitable-whipsnake', 'success', '2026-07-07 21:04:37.476109') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369095-044e1512' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369095-044e1512', 'create_snapshot', 'user', 'vm', '2026-04-16 19:51:35', 'command failed: exit status 2
+Stderr: snapshot failed: Multipass can only take snapshots of stopped instances.', 'POST /api/v1/vms/charitable-whipsnake/snapshots', NULL, 'charitable-whipsnake', 'failed', '2026-07-07 21:04:37.477935') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369136-78f13f13' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369136-78f13f13', 'create_snapshot', 'user', 'vm', '2026-04-16 19:52:16', 'snapshot=test-1', 'POST /api/v1/vms/ansible/snapshots', NULL, 'ansible', 'success', '2026-07-07 21:04:37.479938') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369144-82c1e9f4' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369144-82c1e9f4', 'create_snapshot', 'user', 'vm', '2026-04-16 19:52:24', 'snapshot=other-snapshot', 'POST /api/v1/vms/ansible/snapshots', NULL, 'ansible', 'success', '2026-07-07 21:04:37.482137') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369150-3638c163' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369150-3638c163', 'restore_snapshot', 'user', 'vm', '2026-04-16 19:52:30', 'snapshot=test-1', 'POST /api/v1/vms/ansible/snapshots/test-1/restore', NULL, 'ansible', 'success', '2026-07-07 21:04:37.484269') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369154-87296752' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369154-87296752', 'restore_snapshot', 'user', 'vm', '2026-04-16 19:52:34', 'snapshot=other-snapshot', 'POST /api/v1/vms/ansible/snapshots/other-snapshot/restore', NULL, 'ansible', 'success', '2026-07-07 21:04:37.486317') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369164-b590b9e9' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369164-b590b9e9', 'create_snapshot', 'user', 'vm', '2026-04-16 19:52:44', 'command failed: exit status 2
+Stderr: snapshot failed: Snapshot already exists: ansible.other-snapshot', 'POST /api/v1/vms/ansible/snapshots', NULL, 'ansible', 'failed', '2026-07-07 21:04:37.488316') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369172-33cc95b2' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369172-33cc95b2', 'create_snapshot', 'user', 'vm', '2026-04-16 19:52:52', 'snapshot=another-snaphot', 'POST /api/v1/vms/ansible/snapshots', NULL, 'ansible', 'success', '2026-07-07 21:04:37.490237') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369196-827bbf7e' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369196-827bbf7e', 'restore_snapshot', 'user', 'vm', '2026-04-16 19:53:16', 'snapshot=test-1', 'POST /api/v1/vms/ansible/snapshots/test-1/restore', NULL, 'ansible', 'success', '2026-07-07 21:04:37.492070') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369207-28fa5d31' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369207-28fa5d31', 'create_snapshot', 'user', 'vm', '2026-04-16 19:53:27', 'snapshot=extra-snapshot', 'POST /api/v1/vms/ansible/snapshots', NULL, 'ansible', 'success', '2026-07-07 21:04:37.493993') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369268-7d9d25d4' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369268-7d9d25d4', 'delete', 'user', 'vm', '2026-04-16 19:54:28', 'command failed: exit status 2
+Stderr: delete failed: Cannot shut down instance charitable-whipsnake while starting.
+Use --purge to forcefully delete it.', 'DELETE /api/v1/vms/charitable-whipsnake', NULL, 'charitable-whipsnake', 'failed', '2026-07-07 21:04:37.496057') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776369906-1f54fc68' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.8ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776369906-1f54fc68', 'restore_snapshot', 'user', 'vm', '2026-04-16 20:05:06', 'snapshot=another-snaphot', 'POST /api/v1/vms/ansible/snapshots/another-snaphot/restore', NULL, 'ansible', 'success', '2026-07-07 21:04:37.498582') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776370873-3b0b9986' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776370873-3b0b9986', 'restore_snapshot', 'user', 'vm', '2026-04-16 20:21:13', 'snapshot=extra-snapshot', 'POST /api/v1/vms/ansible/snapshots/extra-snapshot/restore', NULL, 'ansible', 'success', '2026-07-07 21:04:37.501098') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776370879-7d0c4d5f' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776370879-7d0c4d5f', 'restore_snapshot', 'user', 'vm', '2026-04-16 20:21:19', 'snapshot=another-snaphot', 'POST /api/v1/vms/ansible/snapshots/another-snaphot/restore', NULL, 'ansible', 'success', '2026-07-07 21:04:37.503650') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776371776-c398c792' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776371776-c398c792', 'restore_snapshot', 'user', 'vm', '2026-04-16 20:36:16', 'snapshot=extra-snapshot', 'POST /api/v1/vms/ansible/snapshots/extra-snapshot/restore', NULL, 'ansible', 'success', '2026-07-07 21:04:37.505861') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776374862-33d3aeb0' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776374900-96035220' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1776374938-db292890' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1776374938-db292890', 'stop', 'user', 'vm', '2026-04-16 21:28:58', NULL, 'POST /api/v1/vms/undamaged-batfish/stop', NULL, 'undamaged-batfish', 'success', '2026-07-07 21:04:37.512355') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781521068-80a5f2d2' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781521068-80a5f2d2', 'set_template', 'user', 'config', '2026-06-15 10:57:48', 'template=true', 'PUT /api/v1/vms/rootplane-hello-01/template', NULL, 'rootplane-hello-01', 'success', '2026-07-07 21:04:37.514575') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781522739-eadf3527' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781522739-eadf3527', 'stop', 'user', 'vm', '2026-06-15 11:25:39', NULL, 'POST /api/v1/vms/rootplane-hello-01/stop', NULL, 'rootplane-hello-01', 'success', '2026-07-07 21:04:37.516756') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781522750-b29ffe1c' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781522750-b29ffe1c', 'clone', 'user', 'vm', '2026-06-15 11:25:50', 'source=rootplane-hello-01', NULL, NULL, 'Teet-clone', 'success', '2026-07-07 21:04:37.518673') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781522768-c597e1e7' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781522768-c597e1e7', 'delete', 'user', 'vm', '2026-06-15 11:26:08', NULL, 'DELETE /api/v1/vms/Teet-clone', NULL, 'Teet-clone', 'success', '2026-07-07 21:04:37.520516') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781523246-d686e4aa' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781523246-d686e4aa', 'start', 'user', 'vm', '2026-06-15 11:34:06', 'remove template tag before starting this VM', 'POST /api/v1/vms/rootplane-hello-01/start', NULL, 'rootplane-hello-01', 'failed', '2026-07-07 21:04:37.522387') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781523246-140fcd9f' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781523246-140fcd9f', 'delete', 'user', 'vm', '2026-06-15 11:34:06', 'remove template tag before deleting this VM', 'DELETE /api/v1/vms/rootplane-hello-01', NULL, 'rootplane-hello-01', 'failed', '2026-07-07 21:04:37.524262') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781523246-d6ca1320' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781523246-d6ca1320', 'start_all', 'user', 'vm', '2026-06-15 11:34:06', 'started=0 skipped_templates=1', 'POST /api/v1/vms/start-all', NULL, '', 'success', '2026-07-07 21:04:37.526118') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781524891-fc6824f8' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781524891-fc6824f8', 'create_proxy_rule', 'user', 'config', '2026-06-15 12:01:31', 'port=65535', 'POST /api/v1/proxy-rules', NULL, 'rootplane-hello-01', 'success', '2026-07-07 21:04:37.528115') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781524891-5ab34f08' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781524891-5ab34f08', 'delete_proxy_rule', 'user', 'config', '2026-06-15 12:01:31', NULL, 'DELETE /api/v1/proxy-rules/px_9130776056dc3dc0', NULL, 'rootplane-hello-01:65535', 'success', '2026-07-07 21:04:37.530444') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781524968-8f90f0c6' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781524968-8f90f0c6', 'create_proxy_rule', 'user', 'config', '2026-06-15 12:02:48', 'port=65535', 'POST /api/v1/proxy-rules', NULL, 'rootplane-hello-01', 'success', '2026-07-07 21:04:37.532526') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781524968-9d9fbd36' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781524968-9d9fbd36', 'delete_proxy_rule', 'user', 'config', '2026-06-15 12:02:48', NULL, 'DELETE /api/v1/proxy-rules/px_9680ed463dcd2875', NULL, 'rootplane-hello-01:65535', 'success', '2026-07-07 21:04:37.534461') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781525649-c5402a7c' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781525649-c5402a7c', 'create_proxy_rule', 'user', 'config', '2026-06-15 12:14:09', 'port=65535', 'POST /api/v1/proxy-rules', NULL, 'rootplane-hello-01', 'success', '2026-07-07 21:04:37.536309') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Load (0.0ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."id" = '1781525649-00c82de2' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mEvent Create (0.5ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1781525649-00c82de2', 'delete_proxy_rule', 'user', 'config', '2026-06-15 12:14:09', NULL, 'DELETE /api/v1/proxy-rules/px_06ae339165ebb33d', NULL, 'rootplane-hello-01:65535', 'success', '2026-07-07 21:04:37.538186') RETURNING "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:127:in 'block (3 levels) in <compiled>'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mGroup Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "groups" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:149:in 'block (2 levels) in <compiled>'
+  [1m[36mVmAssignment Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "vm_assignments" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:150:in 'block (2 levels) in <compiled>'
+  [1m[36mProfile Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "profiles" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:151:in 'block (2 levels) in <compiled>'
+  [1m[36mSchedule Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:152:in 'block (2 levels) in <compiled>'
+  [1m[36mApiToken Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:153:in 'block (2 levels) in <compiled>'
+  [1m[36mWebhook Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "webhooks" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:154:in 'block (2 levels) in <compiled>'
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" /*application='MultipassWebui'*/[0m
+  ↳ lib/tasks/migrate_from_go.rake:155:in 'block (2 levels) in <compiled>'
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mCACHE Setting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mGroup Pluck (0.1ms)[0m  [1m[34mSELECT "groups"."name" FROM "groups" /*application='MultipassWebui'*/[0m
+  [1m[36mVmAssignment Pluck (0.0ms)[0m  [1m[34mSELECT "vm_assignments"."vm_name", "vm_assignments"."group_id", "vm_assignments"."is_template" FROM "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[36mProfile Pluck (0.0ms)[0m  [1m[34mSELECT "profiles"."id_slug", "profiles"."name" FROM "profiles" /*application='MultipassWebui'*/[0m
+  [1m[36mApiToken Pluck (0.0ms)[0m  [1m[34mSELECT "api_tokens"."name", "api_tokens"."prefix" FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT 5 /*application='MultipassWebui'*/[0m
+Started GET "/login" for ::1 at 2026-07-07 22:04:58 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | GC: 0.0ms)
+Completed 200 OK in 27ms (Views: 13.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 22:04:58 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (1.7ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES ('2026-07-07 21:04:58.418850', '2026-07-08 21:04:58.416004', '::1', '05f8a4e65f0b06b1dbbb85ceb27dbe9b2c0469e51bfa6e286276f617177c0f95', '2026-07-07 21:04:58.418850', 'curl/8.7.1') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 96ms (ActiveRecord: 4.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+

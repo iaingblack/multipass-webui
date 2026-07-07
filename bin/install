@@ -1,0 +1,110 @@
+#!/usr/bin/env bash
+# Installs Multipass WebUI as a systemd service.
+#
+# Run from the project root (after cloning):
+#   sudo bin/install
+#
+# What this does:
+#   1. Copies the app to /opt/multipass-webui
+#   2. Builds JS/CSS assets (requires Node + bundler)
+#   3. Precompiles Rails assets
+#   4. Sets up the SQLite database + secrets
+#   5. Installs + enables two systemd units (puma + worker)
+#   6. Optionally configures nginx
+#
+# Inspired by the upstream Go version's Taskfile service-install target.
+set -euo pipefail
+
+APP_DIR="/opt/multipass-webui"
+SERVICE_PUMA="/etc/systemd/system/multipass-webui.service"
+SERVICE_WORKER="/etc/systemd/system/multipass-webui-worker.service"
+
+if [[ $EUID -ne 0 ]]; then
+  echo "Run with sudo: sudo bin/install"
+  exit 1
+fi
+
+SCRIPT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+echo "→ Source: $SCRIPT_DIR"
+echo "→ Target: $APP_DIR"
+
+# Step 1: install system deps if missing
+if ! command -v ruby >/dev/null 2>&1; then
+  echo "✗ Ruby not installed. Install Ruby 3.3+ first."
+  exit 1
+fi
+if ! command -v node >/dev/null 2>&1; then
+  echo "✗ Node.js not installed. Install Node 20+ first."
+  exit 1
+fi
+if ! command -v multipass >/dev/null 2>&1; then
+  echo "✗ multipass not installed. Install via snap:"
+  echo "    sudo snap install multipass"
+  exit 1
+fi
+
+# Step 2: sync source to /opt/multipass-webui
+echo "→ Syncing app to $APP_DIR..."
+mkdir -p "$APP_DIR"
+rsync -a --delete \
+  --exclude '.git' \
+  --exclude 'node_modules' \
+  --exclude 'tmp' \
+  --exclude 'log/*.log' \
+  --exclude 'storage/*.sqlite3-*' \
+  --exclude '.passgo-web' \
+  "$SCRIPT_DIR/" "$APP_DIR/"
+
+cd "$APP_DIR"
+
+# Step 3: bundle + assets
+echo "→ Installing gems..."
+bundle config set --local without 'development test'
+bundle install --quiet
+
+echo "→ Installing JS deps + building assets..."
+npm ci --silent
+npm run build
+
+echo "→ Precompiling Rails assets..."
+RAILS_ENV=production SECRET_KEY_BASE_DUMMY=1 bin/rails assets:precompile
+
+# Step 4: DB + secrets
+echo "→ Setting up database..."
+RAILS_ENV=production bin/rails db:prepare
+
+if [[ ! -f config/master.key ]]; then
+  echo "→ Generating master.key..."
+  EDITOR=true bin/rails credentials:edit
+fi
+
+# Step 5: install systemd units
+echo "→ Installing systemd units..."
+install -m 644 deploy/multipass-webui.service "$SERVICE_PUMA"
+install -m 644 deploy/multipass-webui-worker.service "$SERVICE_WORKER"
+
+systemctl daemon-reload
+systemctl enable multipass-webui.service multipass-webui-worker.service
+systemctl restart multipass-webui.service multipass-webui-worker.service
+
+# Step 6: nginx (optional)
+if command -v nginx >/dev/null 2>&1; then
+  if [[ ! -f /etc/nginx/sites-enabled/multipass-webui.nginx ]]; then
+    echo "→ Installing nginx site..."
+    cp deploy/multipass-webui.nginx /etc/nginx/sites-available/
+    ln -sf /etc/nginx/sites-available/multipass-webui.nginx /etc/nginx/sites-enabled/
+    nginx -t && systemctl reload nginx
+  fi
+fi
+
+sleep 2
+echo ""
+echo "✓ Installed. Status:"
+systemctl --no-pager status multipass-webui.service | head -10
+echo ""
+echo "Logs:"
+echo "  sudo journalctl -u multipass-webui -f"
+echo "  sudo journalctl -u multipass-webui-worker -f"
+echo ""
+echo "Web UI: http://$(hostname -I | awk '{print $1}'):3000"
+echo "Default login: admin / admin  (change via Settings panel)"

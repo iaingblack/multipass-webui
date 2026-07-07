@@ -1,0 +1,24 @@
+[Unit]
+Description=Multipass WebUI - Puma web server
+After=network.target snap.multipass.multipassd.service
+Wants=snap.multipass.multipassd.service
+
+[Service]
+Type=simple
+# Deployed under /opt/multipass-webui — see bin/install
+Environment=HOME=/root
+Environment=RAILS_ENV=production
+Environment=RAILS_LOG_LEVEL=info
+# Optional: bind a different port (default 3000)
+# Environment=PORT=8080
+WorkingDirectory=/opt/multipass-webui
+ExecStart=/opt/multipass-webui/bin/rails server -b 127.0.0.1 -p 3000 -e production
+ExecReload=/bin/kill -USR2 $MAINPID
+Restart=on-failure
+RestartSec=5
+# Puma needs generous file descriptors + a long-running master
+LimitNOFILE=65535
+TimeoutStopSec=30
+
+[Install]
+WantedBy=multi-user.target

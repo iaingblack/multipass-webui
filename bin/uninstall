@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+# Stops + removes the Multipass WebUI systemd services.
+# Run with: sudo bin/uninstall
+set -euo pipefail
+
+APP_DIR="/opt/multipass-webui"
+SERVICE_PUMA="/etc/systemd/system/multipass-webui.service"
+SERVICE_WORKER="/etc/systemd/system/multipass-webui-worker.service"
+
+if [[ $EUID -ne 0 ]]; then
+  echo "Run with sudo: sudo bin/uninstall"
+  exit 1
+fi
+
+echo "→ Stopping services..."
+systemctl stop multipass-webui.service multipass-webui-worker.service 2>/dev/null || true
+systemctl disable multipass-webui.service multipass-webui-worker.service 2>/dev/null || true
+
+echo "→ Removing systemd units..."
+rm -f "$SERVICE_PUMA" "$SERVICE_WORKER"
+systemctl daemon-reload
+
+# Remove nginx site if installed
+if [[ -f /etc/nginx/sites-enabled/multipass-webui.nginx ]]; then
+  echo "→ Removing nginx site..."
+  rm -f /etc/nginx/sites-enabled/multipass-webui.nginx
+  rm -f /etc/nginx/sites-available/multipass-webui.nginx
+  nginx -t && systemctl reload nginx
+fi
+
+# Optionally remove the app + DB
+read -rp "Remove app dir + database at $APP_DIR? [y/N] " REMOVE_APP
+if [[ "$REMOVE_APP" == "y" ]]; then
+  echo "→ Removing $APP_DIR..."
+  rm -rf "$APP_DIR"
+fi
+
+echo ""
+echo "✓ Uninstalled. App files removed; user data under ~/.multipass-webui/ left intact."

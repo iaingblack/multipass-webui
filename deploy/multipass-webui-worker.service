@@ -1,0 +1,22 @@
+[Unit]
+Description=Multipass WebUI - SolidQueue worker
+After=network.target multipass-webui.service
+Requires=multipass-webui.service
+
+[Service]
+Type=simple
+Environment=HOME=/root
+Environment=RAILS_ENV=production
+Environment=RAILS_LOG_LEVEL=info
+WorkingDirectory=/opt/multipass-webui
+ExecStart=/opt/multipass-webui/bin/jobs
+ExecReload=/bin/kill -USR2 $MAINPID
+Restart=on-failure
+RestartSec=5
+# Workers may spawn subprocesses (multipass, ansible, PTY) — give them room
+LimitNOFILE=65535
+# Long-running jobs (terminal sessions, playbook runs) need this
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target
