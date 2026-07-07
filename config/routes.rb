@@ -26,6 +26,20 @@ Rails.application.routes.draw do
     end
   end
 
+  # Cloud-Init templates + Ansible playbooks
+  resources :cloud_init_templates, param: :name
+  resources :playbooks, param: :name
+
+  # Configuration sections
+  resources :profiles, param: :id
+  resources :schedules, param: :id
+  resources :api_tokens, param: :id
+  resources :webhooks, param: :id do
+    member { post :test }
+  end
+  resources :events, only: %i[index]
+  resource :settings, only: %i[show update]
+
   # Spike routes — temporary, used to prove ActionCable + PTY works.
   # Will be removed once the real Vms::ConsoleTab is wired up.
   get "spike", to: "spike#index"

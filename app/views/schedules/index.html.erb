@@ -1,0 +1,53 @@
+<div class="p-6 fade-in">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold">Schedules</h1>
+    <%= link_to "New schedule", new_schedule_path,
+          class: "px-3 py-1.5 rounded text-sm",
+          style: "background-color: var(--accent); color: white;" %>
+  </div>
+
+  <% if @schedules.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2 font-medium">Name</th>
+            <th class="text-left px-3 py-2 font-medium">Enabled</th>
+            <th class="text-left px-3 py-2 font-medium">Action</th>
+            <th class="text-left px-3 py-2 font-medium">Time</th>
+            <th class="text-left px-3 py-2 font-medium">Days</th>
+            <th class="text-right px-3 py-2 font-medium">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @schedules.each do |s| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2"><%= s.name %></td>
+              <td class="px-3 py-2">
+                <span class="px-1.5 py-0.5 rounded text-xs"
+                      style="background-color: <%= s.enabled ? 'var(--success)' : 'var(--muted)' %>;">
+                  <%= s.enabled ? "on" : "off" %>
+                </span>
+              </td>
+              <td class="px-3 py-2"><%= s.action %></td>
+              <td class="px-3 py-2 font-mono"><%= s.time %></td>
+              <td class="px-3 py-2 text-xs">
+                <%= (s.days || []).map { |d| Schedule::DAYS_OF_WEEK[d] }.join(", ") %>
+              </td>
+              <td class="px-3 py-2 text-right space-x-2">
+                <%= link_to "Edit", edit_schedule_path(s), class: "hover:underline" %>
+                <%= button_to "Delete", schedule_path(s), method: :delete,
+                      class: "hover:underline", style: "color: var(--danger);",
+                      data: { turbo_confirm: "Delete #{s.name}?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No schedules yet.
+    </div>
+  <% end %>
+</div>

@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_07_201752) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_07_203503) do
+  create_table "api_tokens", force: :cascade do |t|
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.string "id_slug", null: false
+    t.string "name", null: false
+    t.string "prefix", null: false
+    t.string "sha256_digest", null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["id_slug"], name: "index_api_tokens_on_id_slug", unique: true
+    t.index ["name"], name: "index_api_tokens_on_name", unique: true
+    t.index ["sha256_digest"], name: "index_api_tokens_on_sha256_digest", unique: true
+  end
+
   create_table "events", id: { type: :string, limit: 32 }, force: :cascade do |t|
     t.string "action", null: false
     t.string "actor", null: false
@@ -35,6 +47,40 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_201752) do
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
     t.index ["name"], name: "index_groups_on_name", unique: true
     t.index ["position"], name: "index_groups_on_position"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.boolean "builtin", default: false
+    t.string "cloud_init"
+    t.integer "cpus"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.integer "disk_gb"
+    t.string "group_name"
+    t.string "id_slug", null: false
+    t.integer "memory_mb"
+    t.string "name", null: false
+    t.string "network"
+    t.string "playbook"
+    t.string "release"
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["id_slug"], name: "index_profiles_on_id_slug", unique: true
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "action", null: false
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.json "days"
+    t.boolean "enabled", default: true
+    t.string "group_name"
+    t.string "id_slug", null: false
+    t.datetime "last_fired_at"
+    t.string "name", null: false
+    t.string "playbook"
+    t.string "target_mode"
+    t.string "time", null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.json "vm_names"
+    t.index ["id_slug"], name: "index_schedules_on_id_slug", unique: true
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -79,6 +125,19 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_07_201752) do
     t.text "ssh_private_key"
     t.text "ssh_public_key"
     t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+  end
+
+  create_table "webhooks", force: :cascade do |t|
+    t.json "categories"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.boolean "enabled", default: true
+    t.string "id_slug", null: false
+    t.string "name", null: false
+    t.json "results"
+    t.string "secret"
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.string "url", null: false
+    t.index ["id_slug"], name: "index_webhooks_on_id_slug", unique: true
   end
 
   add_foreign_key "vm_assignments", "groups"

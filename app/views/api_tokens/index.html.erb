@@ -1,0 +1,57 @@
+<div class="p-6 fade-in">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold">API Tokens</h1>
+  </div>
+
+  <% if @new_token %>
+    <div class="mb-6 p-4 rounded" style="background-color: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent);">
+      <div class="text-sm font-semibold mb-2">Token created — copy it now (shown only once):</div>
+      <code class="block px-3 py-2 rounded font-mono text-sm break-all"
+            style="background-color: var(--bg-primary);"><%= @new_token %></code>
+    </div>
+  <% end %>
+
+  <div class="mb-6">
+    <%= form_with url: api_tokens_path, method: :post, local: true, class: "flex gap-2" do |f| %>
+      <%= f.text_field :name, placeholder: "Token name (e.g. CI automation)",
+            class: "flex-1 px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--bg-primary); border: 1px solid var(--border);",
+            required: true %>
+      <%= f.submit "Create token", class: "px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--accent); color: white;" %>
+    <% end %>
+  </div>
+
+  <% if @tokens.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2 font-medium">Name</th>
+            <th class="text-left px-3 py-2 font-medium">Prefix</th>
+            <th class="text-left px-3 py-2 font-medium">Created</th>
+            <th class="text-right px-3 py-2 font-medium">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @tokens.each do |t| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2"><%= t.name %></td>
+              <td class="px-3 py-2 font-mono" style="color: var(--text-secondary);"><%= t.prefix %>…</td>
+              <td class="px-3 py-2 text-xs" style="color: var(--text-secondary);"><%= time_ago_in_words(t.created_at) %> ago</td>
+              <td class="px-3 py-2 text-right">
+                <%= button_to "Revoke", api_token_path(t), method: :delete,
+                      class: "hover:underline", style: "color: var(--danger);",
+                      data: { turbo_confirm: "Revoke #{t.name}?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No tokens yet.
+    </div>
+  <% end %>
+</div>

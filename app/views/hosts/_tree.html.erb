@@ -12,23 +12,24 @@
     </span>
   <% end %>
 
-  <!-- Sidebar sections (placeholders for later phases) -->
+  <!-- Sidebar sections -->
   <div class="mt-3 space-y-0.5">
     <% [
-      { label: "Cloud-Init", path: "#" },
-      { label: "Ansible", path: "#" },
-      { label: "Profiles", path: "#" },
-      { label: "Schedules", path: "#" },
-      { label: "Webhooks", path: "#" },
-      { label: "API Tokens", path: "#" },
-      { label: "Events", path: "#" },
-      { label: "Settings", path: "#" }
+      { label: "Cloud-Init", path: cloud_init_templates_path },
+      { label: "Ansible", path: playbooks_path },
+      { label: "Profiles", path: profiles_path },
+      { label: "Schedules", path: schedules_path },
+      { label: "Webhooks", path: webhooks_path },
+      { label: "API Tokens", path: api_tokens_path },
+      { label: "Events", path: events_path },
+      { label: "Settings", path: settings_path }
     ].each do |section| %>
-      <a href="<%= section[:path] %>"
-         class="block px-2 py-1 rounded text-sm hover:bg-[var(--bg-hover)]"
-         style="color: var(--text-secondary);">
+      <%= link_to section[:path],
+            data: { turbo_frame: "_top" },
+            class: "block px-2 py-1 rounded text-sm hover:bg-[var(--bg-hover)] #{request.path.start_with?(section[:path]) ? 'bg-[var(--bg-hover)]' : ''}",
+            style: "color: var(--text-secondary);" do %>
         <%= section[:label] %>
-      </a>
+      <% end %>
     <% end %>
   </div>
 

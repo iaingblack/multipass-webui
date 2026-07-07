@@ -1,0 +1,47 @@
+<div class="p-6 fade-in">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold">Cloud-Init Templates</h1>
+    <%= link_to "New template", new_cloud_init_template_path,
+          class: "px-3 py-1.5 rounded text-sm",
+          style: "background-color: var(--accent); color: white;" %>
+  </div>
+
+  <% if @templates.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2 font-medium">Name</th>
+            <th class="text-left px-3 py-2 font-medium">Source</th>
+            <th class="text-right px-3 py-2 font-medium">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @templates.each do |t| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2 font-mono"><%= t.label %></td>
+              <td class="px-3 py-2" style="color: var(--text-secondary);">
+                <%= t.built_in ? "Built-in" : "User" %>
+              </td>
+              <td class="px-3 py-2 text-right space-x-2">
+                <%= link_to t.built_in ? "View" : "Edit",
+                      t.built_in ? cloud_init_template_path(name: t.label) : edit_cloud_init_template_path(name: t.label),
+                      class: "hover:underline" %>
+                <% unless t.built_in %>
+                  <%= button_to "Delete", cloud_init_template_path(name: t.label), method: :delete,
+                        class: "hover:underline",
+                        style: "color: var(--danger);",
+                        data: { turbo_confirm: "Delete #{t.label}?" } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No templates yet.
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,51 @@
+<div class="p-6 fade-in">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold">Webhooks</h1>
+    <%= link_to "New webhook", new_webhook_path,
+          class: "px-3 py-1.5 rounded text-sm",
+          style: "background-color: var(--accent); color: white;" %>
+  </div>
+
+  <% if @webhooks.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2 font-medium">Name</th>
+            <th class="text-left px-3 py-2 font-medium">URL</th>
+            <th class="text-left px-3 py-2 font-medium">Categories</th>
+            <th class="text-left px-3 py-2 font-medium">Enabled</th>
+            <th class="text-right px-3 py-2 font-medium">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @webhooks.each do |w| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2"><%= w.name %></td>
+              <td class="px-3 py-2 font-mono text-xs"><%= w.url %></td>
+              <td class="px-3 py-2 text-xs"><%= (w.categories || []).join(", ") %></td>
+              <td class="px-3 py-2">
+                <span class="px-1.5 py-0.5 rounded text-xs"
+                      style="background-color: <%= w.enabled ? 'var(--success)' : 'var(--muted)' %>;">
+                  <%= w.enabled ? "on" : "off" %>
+                </span>
+              </td>
+              <td class="px-3 py-2 text-right space-x-2">
+                <%= button_to "Test", test_webhook_path(w), method: :post,
+                      class: "hover:underline" %>
+                <%= link_to "Edit", edit_webhook_path(w), class: "hover:underline" %>
+                <%= button_to "Delete", webhook_path(w), method: :delete,
+                      class: "hover:underline", style: "color: var(--danger);",
+                      data: { turbo_confirm: "Delete #{w.name}?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No webhooks yet.
+    </div>
+  <% end %>
+</div>

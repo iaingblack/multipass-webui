@@ -1,0 +1,69 @@
+<div class="p-6 fade-in">
+  <h1 class="text-lg font-semibold mb-4"><%= @profile.persisted? ? "Edit #{@profile.name}" : "New Profile" %></h1>
+
+  <%= form_with model: @profile, local: true, class: "space-y-4 max-w-2xl" do |f| %>
+    <% if @profile.errors.any? %>
+      <div class="px-3 py-2 rounded text-sm" style="background-color: rgba(239,68,68,0.1); color: var(--danger);">
+        <%= @profile.errors.full_messages.to_sentence %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label :name, class: "block text-sm mb-1" %>
+      <%= f.text_field :name, class: "w-full px-3 py-2 rounded text-sm",
+            style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+    </div>
+    <div class="grid grid-cols-4 gap-3">
+      <div>
+        <%= f.label :release, class: "block text-sm mb-1" %>
+        <%= f.select :release, Multipass::Constants::UBUNTU_RELEASES, { include_blank: true },
+              class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+      <div>
+        <%= f.label :cpus, class: "block text-sm mb-1" %>
+        <%= f.number_field :cpus, min: 1, class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+      <div>
+        <%= f.label :memory_mb, "RAM (MB)", class: "block text-sm mb-1" %>
+        <%= f.number_field :memory_mb, min: 512, class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+      <div>
+        <%= f.label :disk_gb, "Disk (GB)", class: "block text-sm mb-1" %>
+        <%= f.number_field :disk_gb, min: 1, class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+    </div>
+    <div class="grid grid-cols-2 gap-3">
+      <div>
+        <%= f.label :cloud_init, class: "block text-sm mb-1" %>
+        <%= f.text_field :cloud_init, class: "w-full px-3 py-2 rounded text-sm font-mono",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+      <div>
+        <%= f.label :network, class: "block text-sm mb-1" %>
+        <%= f.text_field :network, class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+      <div>
+        <%= f.label :playbook, class: "block text-sm mb-1" %>
+        <%= f.text_field :playbook, class: "w-full px-3 py-2 rounded text-sm font-mono",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+      <div>
+        <%= f.label :group_name, "Group", class: "block text-sm mb-1" %>
+        <%= f.text_field :group_name, class: "w-full px-3 py-2 rounded text-sm",
+              style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2">
+      <%= link_to "Cancel", profiles_path,
+            class: "px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--bg-hover); color: var(--text-primary);" %>
+      <%= f.submit "Save", class: "px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--accent); color: white;" %>
+    </div>
+  <% end %>
+</div>

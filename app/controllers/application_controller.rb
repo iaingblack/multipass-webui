@@ -20,13 +20,22 @@ class ApplicationController < ActionController::Base
   end
 
   def logged_in?
-    current_session.present?
+    current_session.present? || valid_api_token?
   end
 
   # The current valid session row, or nil. Memoized per request.
   def current_session
     return @current_session if defined?(@current_session)
     @current_session = Session.find_valid(cookies.signed[:session_token])
+  end
+
+  # API tokens: persistent Bearer tokens for external automation.
+  # Reads from `Authorization: Bearer pgo_...` header. Memoized per request.
+  def valid_api_token?
+    return false if request.authorization.blank?
+
+    bearer = request.authorization.sub(/\ABearer\s+/, "")
+    @api_token ||= ApiToken.find_by_raw_token(bearer)
   end
 
   # Single shared settings row. Memoized per request.

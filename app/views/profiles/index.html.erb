@@ -1,0 +1,52 @@
+<div class="p-6 fade-in">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold">Launch Profiles</h1>
+    <%= link_to "New profile", new_profile_path,
+          class: "px-3 py-1.5 rounded text-sm",
+          style: "background-color: var(--accent); color: white;" %>
+  </div>
+
+  <% if @profiles.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2 font-medium">Name</th>
+            <th class="text-left px-3 py-2 font-medium">Release</th>
+            <th class="text-left px-3 py-2 font-medium">CPUs / RAM / Disk</th>
+            <th class="text-left px-3 py-2 font-medium">Group</th>
+            <th class="text-right px-3 py-2 font-medium">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @profiles.each do |p| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2">
+                <%= p.name %>
+                <% if p.builtin? %>
+                  <span class="ml-1 text-xs px-1.5 py-0.5 rounded"
+                        style="background-color: var(--bg-hover); color: var(--text-secondary);">built-in</span>
+                <% end %>
+              </td>
+              <td class="px-3 py-2"><%= p.release || "—" %></td>
+              <td class="px-3 py-2"><%= "#{p.cpus || '—'} / #{p.memory_mb || '—'}MB / #{p.disk_gb || '—'}GB" %></td>
+              <td class="px-3 py-2"><%= p.group_name || "—" %></td>
+              <td class="px-3 py-2 text-right space-x-2">
+                <%= link_to "Edit", edit_profile_path(p), class: "hover:underline" %>
+                <% unless p.builtin? %>
+                  <%= button_to "Delete", profile_path(p), method: :delete,
+                        class: "hover:underline", style: "color: var(--danger);",
+                        data: { turbo_confirm: "Delete #{p.name}?" } %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No profiles.
+    </div>
+  <% end %>
+</div>

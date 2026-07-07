@@ -1,0 +1,37 @@
+<div class="p-6 fade-in">
+  <div class="flex items-center justify-between mb-4">
+    <h1 class="text-lg font-semibold">Ansible Playbooks</h1>
+    <%= link_to "New playbook", new_playbook_path,
+          class: "px-3 py-1.5 rounded text-sm",
+          style: "background-color: var(--accent); color: white;" %>
+  </div>
+
+  <% if @playbooks.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr><th class="text-left px-3 py-2 font-medium">Name</th>
+               <th class="text-right px-3 py-2 font-medium">Actions</th></tr>
+        </thead>
+        <tbody>
+          <% @playbooks.each do |name| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2 font-mono"><%= name %></td>
+              <td class="px-3 py-2 text-right space-x-2">
+                <%= link_to "Edit", edit_playbook_path(name), class: "hover:underline" %>
+                <%= button_to "Delete", playbook_path(name), method: :delete,
+                      class: "hover:underline",
+                      style: "color: var(--danger);",
+                      data: { turbo_confirm: "Delete #{name}?" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No playbooks yet.
+    </div>
+  <% end %>
+</div>

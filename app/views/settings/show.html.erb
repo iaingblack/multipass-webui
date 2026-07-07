@@ -1,0 +1,75 @@
+<div class="p-6 fade-in max-w-2xl">
+  <h1 class="text-lg font-semibold mb-4">Settings</h1>
+
+  <%= form_with url: settings_path, method: :patch, local: true, class: "space-y-6" do |f| %>
+    <div class="rounded p-4" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+      <h2 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color: var(--text-secondary);">Account</h2>
+      <div class="space-y-3">
+        <div>
+          <%= f.label :username, "Username", class: "block text-sm mb-1" %>
+          <%= text_field_tag "setting[username]", @setting.username,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+        <div>
+          <%= f.label :password, "New password (leave blank to keep current)", class: "block text-sm mb-1" %>
+          <%= password_field_tag "setting[password]", nil,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="rounded p-4" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+      <h2 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color: var(--text-secondary);">VM Defaults</h2>
+      <div class="grid grid-cols-3 gap-3">
+        <div>
+          <%= label_tag "vm_defaults[cpus]", "CPUs", class: "block text-sm mb-1" %>
+          <%= number_field_tag "vm_defaults[cpus]", @vm_defaults.cpus, min: 1,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+        <div>
+          <%= label_tag "vm_defaults[memory_mb]", "RAM (MB)", class: "block text-sm mb-1" %>
+          <%= number_field_tag "vm_defaults[memory_mb]", @vm_defaults.memory_mb, min: 512,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+        <div>
+          <%= label_tag "vm_defaults[disk_gb]", "Disk (GB)", class: "block text-sm mb-1" %>
+          <%= number_field_tag "vm_defaults[disk_gb]", @vm_defaults.disk_gb, min: 1,
+                class: "w-full px-3 py-2 rounded text-sm",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="rounded p-4" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+      <h2 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color: var(--text-secondary);">Paths</h2>
+      <div class="space-y-3">
+        <div>
+          <%= label_tag "setting[cloud_init_dir]", "Cloud-Init directory", class: "block text-sm mb-1" %>
+          <%= text_field_tag "setting[cloud_init_dir]", @setting.cloud_init_dir,
+                class: "w-full px-3 py-2 rounded text-sm font-mono",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+        <div>
+          <%= label_tag "setting[playbooks_dir]", "Playbooks directory", class: "block text-sm mb-1" %>
+          <%= text_field_tag "setting[playbooks_dir]", @setting.playbooks_dir,
+                class: "w-full px-3 py-2 rounded text-sm font-mono",
+                style: "background-color: var(--bg-primary); border: 1px solid var(--border);" %>
+        </div>
+        <div class="flex items-center gap-2">
+          <%= check_box_tag "setting[trust_proxy]", "1", @setting.trust_proxy %>
+          <%= label_tag "setting[trust_proxy]", "Trust X-Forwarded-For (when behind a reverse proxy)" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-end">
+      <%= f.submit "Save settings",
+            class: "px-3 py-1.5 rounded text-sm",
+            style: "background-color: var(--accent); color: white;" %>
+    </div>
+  <% end %>
+</div>

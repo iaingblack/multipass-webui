@@ -1,0 +1,60 @@
+<div class="p-6 fade-in">
+  <h1 class="text-lg font-semibold mb-4">Event Log</h1>
+
+  <div class="mb-4 flex gap-3 text-sm">
+    <%= form_with url: events_path, method: :get, local: true do |f| %>
+      <%= f.select :category, options_for_select(Event::CATEGORIES, params[:category]),
+            { include_blank: "All categories" },
+            class: "px-2 py-1 rounded",
+            style: "background-color: var(--bg-primary); border: 1px solid var(--border);",
+            onchange: "this.form.submit();" %>
+      <%= f.select :actor, options_for_select(Event::ACTORS, params[:actor]),
+            { include_blank: "All actors" },
+            class: "px-2 py-1 rounded",
+            style: "background-color: var(--bg-primary); border: 1px solid var(--border);",
+            onchange: "this.form.submit();" %>
+    <% end %>
+  </div>
+
+  <% if @events.any? %>
+    <div class="rounded overflow-hidden" style="border: 1px solid var(--border);">
+      <table class="w-full text-sm">
+        <thead style="background-color: var(--bg-secondary);">
+          <tr>
+            <th class="text-left px-3 py-2 font-medium">Time</th>
+            <th class="text-left px-3 py-2 font-medium">Category</th>
+            <th class="text-left px-3 py-2 font-medium">Action</th>
+            <th class="text-left px-3 py-2 font-medium">Actor</th>
+            <th class="text-left px-3 py-2 font-medium">Resource</th>
+            <th class="text-left px-3 py-2 font-medium">Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |e| %>
+            <tr class="border-t" style="border-color: var(--border);">
+              <td class="px-3 py-2 text-xs" style="color: var(--text-secondary);">
+                <%= e.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
+              </td>
+              <td class="px-3 py-2 font-mono text-xs"><%= e.category %></td>
+              <td class="px-3 py-2 font-mono text-xs"><%= e.action %></td>
+              <td class="px-3 py-2 text-xs"><%= e.actor %></td>
+              <td class="px-3 py-2 font-mono text-xs"><%= e.resource || "—" %></td>
+              <td class="px-3 py-2">
+                <% if e.result %>
+                  <span class="px-1.5 py-0.5 rounded text-xs"
+                        style="background-color: <%= e.result == 'success' ? 'var(--success)' : (e.result == 'failed' ? 'var(--danger)' : 'var(--warning)') %>;">
+                    <%= e.result %>
+                  </span>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="p-8 rounded text-center" style="background-color: var(--bg-surface); color: var(--text-secondary);">
+      No events.
+    </div>
+  <% end %>
+</div>

@@ -19,6 +19,7 @@ class Event < ApplicationRecord
 
   # Emit + persist an event. Convenience wrapper matching Go's
   # EventLog.EmitEvent(category, action, actor, resource, result, detail).
+  # All params except category/action/actor are optional.
   def self.emit!(category:, action:, actor:, resource: nil, result: nil, detail: nil, endpoint: nil, payload: nil)
     return unless CATEGORIES.include?(category)
     create!(
@@ -31,7 +32,7 @@ class Event < ApplicationRecord
   end
 
   # Emit for an HTTP request — hardcodes actor: "user" and adds endpoint.
-  def self.emit_http!(category:, action:, resource:, result:, detail:, request:)
+  def self.emit_http!(category:, action:, resource:, result:, request:, detail: nil)
     emit!(
       category:, action:, resource:, result:, detail:,
       actor: "user",

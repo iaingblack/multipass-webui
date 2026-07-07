@@ -7156,3 +7156,983 @@ Completed 200 OK in 92ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached)
 
 
   [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT 5 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Migrating to CreateProfiles (20260707203500)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "release" varchar, "cpus" integer, "memory_mb" integer, "disk_gb" integer, "cloud_init" varchar, "network" varchar, "playbook" varchar, "group_name" varchar, "builtin" boolean DEFAULT FALSE, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_profiles_on_id_slug" ON "profiles" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203500') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateSchedules (20260707203501)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "enabled" boolean DEFAULT TRUE, "action" varchar NOT NULL, "time" varchar NOT NULL, "days" json, "target_mode" varchar, "vm_names" json, "group_name" varchar, "playbook" varchar, "last_fired_at" datetime(6), "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_schedules_on_id_slug" ON "schedules" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203501') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateApiTokens (20260707203502)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "hash" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_hash" ON "api_tokens" ("hash") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203502') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateWebhooks (20260707203503)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "url" varchar NOT NULL, "enabled" boolean DEFAULT TRUE, "categories" json, "results" json, "secret" varchar, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203503') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Started GET "/login" for ::1 at 2026-07-07 21:44:43 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | GC: 0.0ms)
+Completed 200 OK in 26ms (Views: 12.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.1ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 21:44:43 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (1.8ms)[0m  [1m[32mINSERT INTO "sessions" ("token_hash", "expires_at", "ip_address", "user_agent", "created_at", "updated_at") VALUES ('61e4f9b59949371197390a12cdc4c933bac89cb4fc51cbc8f6ae994e703994a7', '2026-07-08 20:44:43.899470', '::1', 'curl/8.7.1', '2026-07-07 20:44:43.902315', '2026-07-07 20:44:43.902315') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 326ms (ActiveRecord: 4.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/up" for ::1 at 2026-07-07 21:45:17 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by Rails::HealthController#show as */*
+  Rendering html template
+  Rendered html template (Duration: 0.0ms | GC: 0.0ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/login" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 4.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | GC: 0.0ms)
+Completed 200 OK in 28ms (Views: 12.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.7ms)[0m  [1m[32mINSERT INTO "sessions" ("token_hash", "expires_at", "ip_address", "user_agent", "created_at", "updated_at") VALUES ('cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa', '2026-07-08 20:45:24.543742', '::1', 'curl/8.7.1', '2026-07-07 20:45:24.546918', '2026-07-07 20:45:24.546918') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 329ms (ActiveRecord: 3.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/cloud_init_templates" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by CloudInitTemplatesController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='index',application='MultipassWebui',controller='cloud_init_templates'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='index',application='MultipassWebui',controller='cloud_init_templates'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendering layout layouts/application.html.erb
+  Rendering cloud_init_templates/index.html.erb within layouts/application
+  Rendered cloud_init_templates/index.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  [1m[36mCACHE Setting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 0.2ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/playbooks" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by PlaybooksController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='index',application='MultipassWebui',controller='playbooks'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='index',application='MultipassWebui',controller='playbooks'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendering layout layouts/application.html.erb
+  Rendering playbooks/index.html.erb within layouts/application
+  Rendered playbooks/index.html.erb within layouts/application (Duration: 0.4ms | GC: 0.0ms)
+  [1m[36mCACHE Setting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 1.5ms | GC: 0.0ms)
+Completed 200 OK in 5ms (Views: 2.1ms | ActiveRecord: 0.2ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/profiles" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by ProfilesController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='index',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  Rendering layout layouts/application.html.erb
+  Rendering profiles/index.html.erb within layouts/application
+  [1m[36mProfile Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "profiles" LIMIT 1 /*action='index',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/views/profiles/index.html.erb:10
+  Rendered profiles/index.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='index',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | GC: 0.0ms)
+Completed 200 OK in 7ms (Views: 3.1ms | ActiveRecord: 0.5ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/schedules" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by SchedulesController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='index',application='MultipassWebui',controller='schedules'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  Rendering layout layouts/application.html.erb
+  Rendering schedules/index.html.erb within layouts/application
+  [1m[36mSchedule Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" LIMIT 1 /*action='index',application='MultipassWebui',controller='schedules'*/[0m
+  ↳ app/views/schedules/index.html.erb:10
+  Rendered schedules/index.html.erb within layouts/application (Duration: 1.2ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='index',application='MultipassWebui',controller='schedules'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 2.9ms | ActiveRecord: 0.6ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api_tokens" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by ApiTokensController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='index',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  Rendering layout layouts/application.html.erb
+  Rendering api_tokens/index.html.erb within layouts/application
+  [1m[36mApiToken Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" LIMIT 1 /*action='index',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/views/api_tokens/index.html.erb:26
+  Rendered api_tokens/index.html.erb within layouts/application (Duration: 1.8ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='index',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | GC: 0.0ms)
+Completed 200 OK in 9ms (Views: 3.7ms | ActiveRecord: 0.7ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/webhooks" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by WebhooksController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='index',application='MultipassWebui',controller='webhooks'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  Rendering layout layouts/application.html.erb
+  Rendering webhooks/index.html.erb within layouts/application
+  [1m[36mWebhook Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "webhooks" LIMIT 1 /*action='index',application='MultipassWebui',controller='webhooks'*/[0m
+  ↳ app/views/webhooks/index.html.erb:10
+  Rendered webhooks/index.html.erb within layouts/application (Duration: 1.0ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='index',application='MultipassWebui',controller='webhooks'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 2.3ms | GC: 0.0ms)
+Completed 200 OK in 8ms (Views: 3.0ms | ActiveRecord: 0.4ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/events" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by EventsController#index as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='index',application='MultipassWebui',controller='events'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  Rendering layout layouts/application.html.erb
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "events" LIMIT 1 /*action='index',application='MultipassWebui',controller='events'*/[0m
+  ↳ app/views/events/index.html.erb:20
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT 50 /*action='index',application='MultipassWebui',controller='events'*/[0m
+  ↳ app/views/events/index.html.erb:34
+  Rendered events/index.html.erb within layouts/application (Duration: 5.7ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='index',application='MultipassWebui',controller='events'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | GC: 0.0ms)
+Completed 200 OK in 12ms (Views: 7.8ms | ActiveRecord: 0.7ms (4 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/settings" for ::1 at 2026-07-07 21:45:24 +0100
+Processing by SettingsController#show as */*
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='show',application='MultipassWebui',controller='settings'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='show',application='MultipassWebui',controller='settings'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mVmDefault Load (0.0ms)[0m  [1m[34mSELECT "vm_defaults".* FROM "vm_defaults" ORDER BY "vm_defaults"."id" ASC LIMIT 1 /*action='show',application='MultipassWebui',controller='settings'*/[0m
+  ↳ app/models/vm_default.rb:7:in 'VmDefault.current'
+  Rendering layout layouts/application.html.erb
+  Rendering settings/show.html.erb within layouts/application
+  Rendered settings/show.html.erb within layouts/application (Duration: 1.3ms | GC: 0.0ms)
+  [1m[36mCACHE Setting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | GC: 0.0ms)
+Completed 200 OK in 10ms (Views: 3.3ms | ActiveRecord: 0.4ms (4 queries, 1 cached) | GC: 0.0ms)
+
+
+Started POST "/api_tokens" for ::1 at 2026-07-07 21:45:32 +0100
+Processing by ApiTokensController#create as */*
+  Parameters: {"name" => "CI automation", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::DangerousAttributeError (hash is defined by Active Record. Check to make sure that you don't have an attribute or method with the same name.):
+  
+app/models/api_token.rb:22:in 'ApiToken.issue!'
+app/controllers/api_tokens_controller.rb:13:in 'ApiTokensController#create'
+Started POST "/profiles" for ::1 at 2026-07-07 21:45:33 +0100
+Processing by ProfilesController#create as */*
+  Parameters: {"profile" => {"name" => "web-server", "release" => "24.04", "cpus" => "2", "memory_mb" => "2048", "disk_gb" => "10", "group_name" => "web"}, "authenticity_token" => "[FILTERED]"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'cd41db0873f8c1cb37aca44a9b22d1a06220cd8c14369fdf5cdbd684d27f29fa' LIMIT 1 /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+  [1m[36mProfile Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "profiles" WHERE "profiles"."id_slug" = 'web-server-2be0' LIMIT 1 /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+  [1m[36mProfile Create (0.2ms)[0m  [1m[32mINSERT INTO "profiles" ("id_slug", "name", "release", "cpus", "memory_mb", "disk_gb", "cloud_init", "network", "playbook", "group_name", "builtin", "created_at", "updated_at") VALUES ('web-server-2be0', 'web-server', '24.04', 2, 2048, 10, NULL, NULL, NULL, 'web', FALSE, '2026-07-07 20:45:33.072516', '2026-07-07 20:45:33.072516') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 1.0ms (3 queries, 0 cached) | GC: 0.1ms)
+
+
+  
+ArgumentError (missing keyword: :detail):
+  
+app/models/event.rb:34:in 'emit_http!'
+app/controllers/profiles_controller.rb:15:in 'ProfilesController#create'
+  [1m[36mApiToken Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[36mApiToken Pluck (0.0ms)[0m  [1m[34mSELECT "api_tokens"."name" FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[36mProfile Count (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "profiles" /*application='MultipassWebui'*/[0m
+  [1m[36mProfile Pluck (0.0ms)[0m  [1m[34mSELECT "profiles"."name" FROM "profiles" /*application='MultipassWebui'*/[0m
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Reverting CreateWebhooks (20260707203503)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mDROP INDEX "index_webhooks_on_id_slug" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "webhooks" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20260707203503' /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Migrating to CreateWebhooks (20260707203503)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "url" varchar NOT NULL, "enabled" boolean DEFAULT TRUE, "categories" json, "results" json, "secret" varchar, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203503') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Started GET "/login" for ::1 at 2026-07-07 21:46:32 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | GC: 0.0ms)
+Completed 200 OK in 23ms (Views: 11.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.4ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 21:46:32 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.7ms)[0m  [1m[32mINSERT INTO "sessions" ("token_hash", "expires_at", "ip_address", "user_agent", "created_at", "updated_at") VALUES ('79102fea70d4f0e01d85dd3b7a7a27db8c7325d3d69d3cf3c7cf60ac49d95b14', '2026-07-08 20:46:32.979755', '::1', 'curl/8.7.1', '2026-07-07 20:46:32.982732', '2026-07-07 20:46:32.982732') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 326ms (ActiveRecord: 3.5ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api_tokens" for ::1 at 2026-07-07 21:46:33 +0100
+Processing by ApiTokensController#create as */*
+  Parameters: {"name" => "CI automation", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = '79102fea70d4f0e01d85dd3b7a7a27db8c7325d3d69d3cf3c7cf60ac49d95b14' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::DangerousAttributeError (hash is defined by Active Record. Check to make sure that you don't have an attribute or method with the same name.):
+  
+app/models/api_token.rb:22:in 'ApiToken.issue!'
+app/controllers/api_tokens_controller.rb:13:in 'ApiTokensController#create'
+Started POST "/profiles" for ::1 at 2026-07-07 21:46:33 +0100
+Processing by ProfilesController#create as */*
+  Parameters: {"profile" => {"name" => "web-server", "release" => "24.04", "cpus" => "2", "memory_mb" => "2048", "disk_gb" => "10", "group_name" => "web"}, "authenticity_token" => "[FILTERED]"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = '79102fea70d4f0e01d85dd3b7a7a27db8c7325d3d69d3cf3c7cf60ac49d95b14' LIMIT 1 /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+  [1m[36mProfile Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "profiles" WHERE "profiles"."id_slug" = 'web-server-dbf2' LIMIT 1 /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+  [1m[36mProfile Create (0.1ms)[0m  [1m[32mINSERT INTO "profiles" ("id_slug", "name", "release", "cpus", "memory_mb", "disk_gb", "cloud_init", "network", "playbook", "group_name", "builtin", "created_at", "updated_at") VALUES ('web-server-dbf2', 'web-server', '24.04', 2, 2048, 10, NULL, NULL, NULL, 'web', FALSE, '2026-07-07 20:46:33.178873', '2026-07-07 20:46:33.178873') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/controllers/profiles_controller.rb:14:in 'ProfilesController#create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("id", "category", "action", "actor", "resource", "result", "detail", "endpoint", "payload", "created_at", "updated_at") VALUES ('1783457193-200a', 'config', 'create_profile', 'user', 'web-server-dbf2', 'success', NULL, 'POST /profiles', '{"params":{"profile":{"name":"web-server","release":"24.04","cpus":"2","memory_mb":"2048","disk_gb":"10","group_name":"web"},"authenticity_token":"N36G5Ez_5lygztpysk_wZw27Pm21HSw9y-4r0MaEXlkOe1s9BLxJMyOxhRdujcgyhIghQMwleGsDjBDIFuPWuQ"}}', '2026-07-07 20:46:33.185088', '2026-07-07 20:46:33.185088') RETURNING "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='profiles'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+Redirected to http://localhost:3000/profiles
+↳ app/controllers/profiles_controller.rb:17:in 'ProfilesController#create'
+Completed 302 Found in 22ms (ActiveRecord: 2.1ms (4 queries, 0 cached) | GC: 6.1ms)
+
+
+  [1m[36mApiToken Count (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[36mApiToken Pluck (0.0ms)[0m  [1m[34mSELECT "api_tokens"."name" FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[36mProfile Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "profiles" /*application='MultipassWebui'*/[0m
+  [1m[36mProfile Pluck (0.0ms)[0m  [1m[34mSELECT "profiles"."name" FROM "profiles" /*application='MultipassWebui'*/[0m
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Reverting CreateWebhooks (20260707203503)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.1ms)[0m  [1m[35mDROP INDEX "index_webhooks_on_id_slug" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "webhooks" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Destroy (0.0ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20260707203503' /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Reverting CreateApiTokens (20260707203502)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Migrating to CreateWebhooks (20260707203503)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "url" varchar NOT NULL, "enabled" boolean DEFAULT TRUE, "categories" json, "results" json, "secret" varchar, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203503') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "hash" varchar NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_hash" ON "api_tokens" ("hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" varchar(32) NOT NULL PRIMARY KEY, "action" varchar NOT NULL, "actor" varchar NOT NULL, "category" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "detail" text, "endpoint" varchar, "payload" json, "resource" varchar, "result" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_actor_and_created_at" ON "events" ("actor", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_category_and_created_at" ON "events" ("category", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_created_at" ON "events" ("created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_resource_and_created_at" ON "events" ("resource", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "groups" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "groups" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "name" varchar NOT NULL, "position" integer DEFAULT 0 NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_groups_on_name" ON "groups" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_groups_on_position" ON "groups" ("position") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "profiles" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "builtin" boolean DEFAULT FALSE, "cloud_init" varchar, "cpus" integer, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer, "group_name" varchar, "id_slug" varchar NOT NULL, "memory_mb" integer, "name" varchar NOT NULL, "network" varchar, "playbook" varchar, "release" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_profiles_on_id_slug" ON "profiles" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "schedules" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "days" json, "enabled" boolean DEFAULT TRUE, "group_name" varchar, "id_slug" varchar NOT NULL, "last_fired_at" datetime(6), "name" varchar NOT NULL, "playbook" varchar, "target_mode" varchar, "time" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_names" json) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_schedules_on_id_slug" ON "schedules" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "sessions" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "expires_at" datetime(6) NOT NULL, "ip_address" varchar, "token_hash" varchar(64) NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "user_agent" varchar) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_expires_at" ON "sessions" ("expires_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_sessions_on_token_hash" ON "sessions" ("token_hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "settings" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cloud_init_dir" varchar DEFAULT '', "cloud_init_repo" varchar DEFAULT '', "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "listen_port" integer DEFAULT 3000, "password_digest" varchar NOT NULL, "playbooks_dir" varchar DEFAULT '', "trust_proxy" boolean DEFAULT FALSE, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "username" varchar DEFAULT 'admin' NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_settings_on_id" ON "settings" ("id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_defaults" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_defaults" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cpus" integer DEFAULT 2 NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer DEFAULT 8 NOT NULL, "memory_mb" integer DEFAULT 1024 NOT NULL, "ssh_private_key" text, "ssh_public_key" text, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "webhooks" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "categories" json, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "enabled" boolean DEFAULT TRUE, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "results" json, "secret" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "url" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_avm_assignments_on_vm_name" ON "avm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_avm_assignments_on_group_id" ON "avm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "avm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL, CONSTRAINT "fk_rails_13b7c3dafd"
+FOREIGN KEY ("group_id")
+  REFERENCES "groups" ("id")
+) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "vm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260707203503) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20260707203502),
+(20260707203501),
+(20260707203500),
+(20260707201752),
+(20260707201751),
+(20260707201750),
+(20260707201025),
+(20260707201024),
+(20260707201023); /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-07-07 20:47:13.179132', '2026-07-07 20:47:13.179133') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '21d0fa3fd726b04776e42fe7cf8c9c750e0efa6d', '2026-07-07 20:47:13.180413', '2026-07-07 20:47:13.180413') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "hash" varchar NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_hash" ON "api_tokens" ("hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" varchar(32) NOT NULL PRIMARY KEY, "action" varchar NOT NULL, "actor" varchar NOT NULL, "category" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "detail" text, "endpoint" varchar, "payload" json, "resource" varchar, "result" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_actor_and_created_at" ON "events" ("actor", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_category_and_created_at" ON "events" ("category", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_created_at" ON "events" ("created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_resource_and_created_at" ON "events" ("resource", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "groups" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "groups" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "name" varchar NOT NULL, "position" integer DEFAULT 0 NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_groups_on_name" ON "groups" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_groups_on_position" ON "groups" ("position") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "profiles" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "builtin" boolean DEFAULT FALSE, "cloud_init" varchar, "cpus" integer, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer, "group_name" varchar, "id_slug" varchar NOT NULL, "memory_mb" integer, "name" varchar NOT NULL, "network" varchar, "playbook" varchar, "release" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_profiles_on_id_slug" ON "profiles" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "schedules" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "days" json, "enabled" boolean DEFAULT TRUE, "group_name" varchar, "id_slug" varchar NOT NULL, "last_fired_at" datetime(6), "name" varchar NOT NULL, "playbook" varchar, "target_mode" varchar, "time" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_names" json) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_schedules_on_id_slug" ON "schedules" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "sessions" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "expires_at" datetime(6) NOT NULL, "ip_address" varchar, "token_hash" varchar(64) NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "user_agent" varchar) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_expires_at" ON "sessions" ("expires_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_sessions_on_token_hash" ON "sessions" ("token_hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "settings" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cloud_init_dir" varchar DEFAULT '', "cloud_init_repo" varchar DEFAULT '', "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "listen_port" integer DEFAULT 3000, "password_digest" varchar NOT NULL, "playbooks_dir" varchar DEFAULT '', "trust_proxy" boolean DEFAULT FALSE, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "username" varchar DEFAULT 'admin' NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_settings_on_id" ON "settings" ("id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_defaults" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_defaults" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cpus" integer DEFAULT 2 NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer DEFAULT 8 NOT NULL, "memory_mb" integer DEFAULT 1024 NOT NULL, "ssh_private_key" text, "ssh_public_key" text, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "webhooks" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "categories" json, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "enabled" boolean DEFAULT TRUE, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "results" json, "secret" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "url" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_avm_assignments_on_vm_name" ON "avm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_avm_assignments_on_group_id" ON "avm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "avm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL, CONSTRAINT "fk_rails_13b7c3dafd"
+FOREIGN KEY ("group_id")
+  REFERENCES "groups" ("id")
+) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "vm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260707203503) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20260707203502),
+(20260707203501),
+(20260707203500),
+(20260707201752),
+(20260707201751),
+(20260707201750),
+(20260707201025),
+(20260707201024),
+(20260707201023); /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-07-07 20:47:42.644307', '2026-07-07 20:47:42.644308') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '21d0fa3fd726b04776e42fe7cf8c9c750e0efa6d', '2026-07-07 20:47:42.645776', '2026-07-07 20:47:42.645777') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "hash" varchar NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_hash" ON "api_tokens" ("hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" varchar(32) NOT NULL PRIMARY KEY, "action" varchar NOT NULL, "actor" varchar NOT NULL, "category" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "detail" text, "endpoint" varchar, "payload" json, "resource" varchar, "result" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_actor_and_created_at" ON "events" ("actor", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_category_and_created_at" ON "events" ("category", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_created_at" ON "events" ("created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_resource_and_created_at" ON "events" ("resource", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "groups" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "groups" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "name" varchar NOT NULL, "position" integer DEFAULT 0 NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_groups_on_name" ON "groups" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_groups_on_position" ON "groups" ("position") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "profiles" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "builtin" boolean DEFAULT FALSE, "cloud_init" varchar, "cpus" integer, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer, "group_name" varchar, "id_slug" varchar NOT NULL, "memory_mb" integer, "name" varchar NOT NULL, "network" varchar, "playbook" varchar, "release" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_profiles_on_id_slug" ON "profiles" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "schedules" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "days" json, "enabled" boolean DEFAULT TRUE, "group_name" varchar, "id_slug" varchar NOT NULL, "last_fired_at" datetime(6), "name" varchar NOT NULL, "playbook" varchar, "target_mode" varchar, "time" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_names" json) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_schedules_on_id_slug" ON "schedules" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "sessions" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "expires_at" datetime(6) NOT NULL, "ip_address" varchar, "token_hash" varchar(64) NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "user_agent" varchar) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_expires_at" ON "sessions" ("expires_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_sessions_on_token_hash" ON "sessions" ("token_hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "settings" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cloud_init_dir" varchar DEFAULT '', "cloud_init_repo" varchar DEFAULT '', "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "listen_port" integer DEFAULT 3000, "password_digest" varchar NOT NULL, "playbooks_dir" varchar DEFAULT '', "trust_proxy" boolean DEFAULT FALSE, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "username" varchar DEFAULT 'admin' NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_settings_on_id" ON "settings" ("id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_defaults" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_defaults" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cpus" integer DEFAULT 2 NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer DEFAULT 8 NOT NULL, "memory_mb" integer DEFAULT 1024 NOT NULL, "ssh_private_key" text, "ssh_public_key" text, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "webhooks" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "categories" json, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "enabled" boolean DEFAULT TRUE, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "results" json, "secret" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "url" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_avm_assignments_on_vm_name" ON "avm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_avm_assignments_on_group_id" ON "avm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "avm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL, CONSTRAINT "fk_rails_13b7c3dafd"
+FOREIGN KEY ("group_id")
+  REFERENCES "groups" ("id")
+) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "vm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260707203503) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20260707203502),
+(20260707203501),
+(20260707203500),
+(20260707201752),
+(20260707201751),
+(20260707201750),
+(20260707201025),
+(20260707201024),
+(20260707201023); /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-07-07 20:47:52.570238', '2026-07-07 20:47:52.570239') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '21d0fa3fd726b04776e42fe7cf8c9c750e0efa6d', '2026-07-07 20:47:52.571650', '2026-07-07 20:47:52.571650') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "hash" varchar NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_hash" ON "api_tokens" ("hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "events" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "events" ("id" varchar(32) NOT NULL PRIMARY KEY, "action" varchar NOT NULL, "actor" varchar NOT NULL, "category" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "detail" text, "endpoint" varchar, "payload" json, "resource" varchar, "result" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_actor_and_created_at" ON "events" ("actor", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_category_and_created_at" ON "events" ("category", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_created_at" ON "events" ("created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_resource_and_created_at" ON "events" ("resource", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "groups" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "groups" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "name" varchar NOT NULL, "position" integer DEFAULT 0 NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_groups_on_name" ON "groups" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_groups_on_position" ON "groups" ("position") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "profiles" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "builtin" boolean DEFAULT FALSE, "cloud_init" varchar, "cpus" integer, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer, "group_name" varchar, "id_slug" varchar NOT NULL, "memory_mb" integer, "name" varchar NOT NULL, "network" varchar, "playbook" varchar, "release" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_profiles_on_id_slug" ON "profiles" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "schedules" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "action" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "days" json, "enabled" boolean DEFAULT TRUE, "group_name" varchar, "id_slug" varchar NOT NULL, "last_fired_at" datetime(6), "name" varchar NOT NULL, "playbook" varchar, "target_mode" varchar, "time" varchar NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_names" json) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_schedules_on_id_slug" ON "schedules" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "sessions" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "expires_at" datetime(6) NOT NULL, "ip_address" varchar, "token_hash" varchar(64) NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "user_agent" varchar) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_expires_at" ON "sessions" ("expires_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_sessions_on_token_hash" ON "sessions" ("token_hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "settings" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cloud_init_dir" varchar DEFAULT '', "cloud_init_repo" varchar DEFAULT '', "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "listen_port" integer DEFAULT 3000, "password_digest" varchar NOT NULL, "playbooks_dir" varchar DEFAULT '', "trust_proxy" boolean DEFAULT FALSE, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "username" varchar DEFAULT 'admin' NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_settings_on_id" ON "settings" ("id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "vm_defaults" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_defaults" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cpus" integer DEFAULT 2 NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "disk_gb" integer DEFAULT 8 NOT NULL, "memory_mb" integer DEFAULT 1024 NOT NULL, "ssh_private_key" text, "ssh_public_key" text, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "webhooks" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "categories" json, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "enabled" boolean DEFAULT TRUE, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "results" json, "secret" varchar, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "url" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TEMPORARY TABLE "avm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "tindex_avm_assignments_on_vm_name" ON "avm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "tindex_avm_assignments_on_group_id" ON "avm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "avm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "vm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "vm_name" varchar NOT NULL, CONSTRAINT "fk_rails_13b7c3dafd"
+FOREIGN KEY ("group_id")
+  REFERENCES "groups" ("id")
+) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "vm_assignments" ("id","created_at","group_id","is_template","updated_at","vm_name")
+                     SELECT "id","created_at","group_id","is_template","updated_at","vm_name" FROM "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "avm_assignments" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1 /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20260707203503) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20260707203502),
+(20260707203501),
+(20260707203500),
+(20260707201752),
+(20260707201751),
+(20260707201750),
+(20260707201025),
+(20260707201024),
+(20260707201023); /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-07-07 20:48:13.411888', '2026-07-07 20:48:13.411889') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'schema_sha1' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('schema_sha1', '21d0fa3fd726b04776e42fe7cf8c9c750e0efa6d', '2026-07-07 20:48:13.413393', '2026-07-07 20:48:13.413394') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Reverting CreateApiTokens (20260707203502)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE IF EXISTS api_tokens /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS schema_migrations /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "sha256_digest" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_sha256_digest" ON "api_tokens" ("sha256_digest") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA table_info(api_tokens) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-07-07 20:48:47.371683', '2026-07-07 20:48:47.371685') RETURNING "key" /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Migrating to CreateSettings (20260707201023)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "settings" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "username" varchar DEFAULT 'admin' NOT NULL, "password_digest" varchar NOT NULL, "listen_port" integer DEFAULT 3000, "cloud_init_dir" varchar DEFAULT '', "cloud_init_repo" varchar DEFAULT '', "playbooks_dir" varchar DEFAULT '', "trust_proxy" boolean DEFAULT FALSE, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_settings_on_id" ON "settings" ("id") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707201023') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateVmDefaults (20260707201024)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "vm_defaults" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "cpus" integer DEFAULT 2 NOT NULL, "memory_mb" integer DEFAULT 1024 NOT NULL, "disk_gb" integer DEFAULT 8 NOT NULL, "ssh_public_key" text, "ssh_private_key" text, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707201024') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateSessions (20260707201025)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "sessions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "token_hash" varchar(64) NOT NULL, "expires_at" datetime(6) NOT NULL, "ip_address" varchar, "user_agent" varchar, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_sessions_on_token_hash" ON "sessions" ("token_hash") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_sessions_on_expires_at" ON "sessions" ("expires_at") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707201025') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateGroups (20260707201750)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "groups" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "position" integer DEFAULT 0 NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_groups_on_name" ON "groups" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_groups_on_position" ON "groups" ("position") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707201750') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateVmAssignments (20260707201751)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "vm_assignments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "vm_name" varchar NOT NULL, "group_id" integer, "is_template" boolean DEFAULT FALSE NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, CONSTRAINT "fk_rails_13b7c3dafd"
+FOREIGN KEY ("group_id")
+  REFERENCES "groups" ("id")
+) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_vm_assignments_on_group_id" ON "vm_assignments" ("group_id") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_vm_assignments_on_vm_name" ON "vm_assignments" ("vm_name") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707201751') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateEvents (20260707201752)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "events" ("id" varchar(32) NOT NULL PRIMARY KEY, "category" varchar NOT NULL, "action" varchar NOT NULL, "actor" varchar NOT NULL, "resource" varchar, "result" varchar, "detail" text, "endpoint" varchar, "payload" json, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_events_on_created_at" ON "events" ("created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_events_on_category_and_created_at" ON "events" ("category", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_events_on_actor_and_created_at" ON "events" ("actor", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_events_on_resource_and_created_at" ON "events" ("resource", "created_at") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707201752') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateProfiles (20260707203500)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "profiles" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "release" varchar, "cpus" integer, "memory_mb" integer, "disk_gb" integer, "cloud_init" varchar, "network" varchar, "playbook" varchar, "group_name" varchar, "builtin" boolean DEFAULT FALSE, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_profiles_on_id_slug" ON "profiles" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203500') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateSchedules (20260707203501)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "schedules" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "enabled" boolean DEFAULT TRUE, "action" varchar NOT NULL, "time" varchar NOT NULL, "days" json, "target_mode" varchar, "vm_names" json, "group_name" varchar, "playbook" varchar, "last_fired_at" datetime(6), "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_schedules_on_id_slug" ON "schedules" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203501') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateApiTokens (20260707203502)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "api_tokens" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "prefix" varchar NOT NULL, "sha256_digest" varchar NOT NULL, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_id_slug" ON "api_tokens" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_name" ON "api_tokens" ("name") /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_api_tokens_on_sha256_digest" ON "api_tokens" ("sha256_digest") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203502') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+Migrating to CreateWebhooks (20260707203503)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "webhooks" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "id_slug" varchar NOT NULL, "name" varchar NOT NULL, "url" varchar NOT NULL, "enabled" boolean DEFAULT TRUE, "categories" json, "results" json, "secret" varchar, "created_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL, "updated_at" datetime(6) DEFAULT CURRENT_TIMESTAMP NOT NULL) /*application='MultipassWebui'*/[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_webhooks_on_id_slug" ON "webhooks" ("id_slug") /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260707203503') RETURNING "version" /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Started GET "/login" for ::1 at 2026-07-07 21:49:02 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 7.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 13.5ms | GC: 0.0ms)
+Completed 200 OK in 48ms (Views: 18.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 21:49:03 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mSetting Create (0.8ms)[0m  [1m[32mINSERT INTO "settings" ("username", "password_digest", "listen_port", "cloud_init_dir", "cloud_init_repo", "playbooks_dir", "trust_proxy", "created_at", "updated_at") VALUES ('admin', '$2a$12$5Y4akyg8LrQ3MPeRjB5S2en/xTEdmcFlUnelYr9swvR2seFqlGjem', 3000, '', '', '', FALSE, '2026-07-07 20:49:03.364510', '2026-07-07 20:49:03.364510') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.7ms)[0m  [1m[32mINSERT INTO "sessions" ("token_hash", "expires_at", "ip_address", "user_agent", "created_at", "updated_at") VALUES ('d5d766d782a5d7229e48ddddd0343b290d98c8f7d9ef9550594d8367ac7b6e5a', '2026-07-08 20:49:03.675443', '::1', 'curl/8.7.1', '2026-07-07 20:49:03.678208', '2026-07-07 20:49:03.678208') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 642ms (ActiveRecord: 4.1ms (3 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api_tokens" for ::1 at 2026-07-07 21:49:03 +0100
+Processing by ApiTokensController#create as */*
+  Parameters: {"name" => "CI automation", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'd5d766d782a5d7229e48ddddd0343b290d98c8f7d9ef9550594d8367ac7b6e5a' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."id_slug" = 'tok_544e927458afe5ca' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."name" = 'CI automation' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."sha256_digest" = '610e258c7e6249668f219e8fd7bc88bacbc64770dc4fe00ba18ba26ba8a8a3be' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Create (0.1ms)[0m  [1m[32mINSERT INTO "api_tokens" ("id_slug", "name", "prefix", "sha256_digest", "created_at", "updated_at") VALUES ('tok_544e927458afe5ca', 'CI automation', 'pgo_dc7b76d2', '610e258c7e6249668f219e8fd7bc88bacbc64770dc4fe00ba18ba26ba8a8a3be', '2026-07-07 20:49:03.711294', '2026-07-07 20:49:03.711294') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "category", "action", "actor", "resource", "result", "detail", "endpoint", "payload", "created_at", "updated_at") VALUES ('1783457343-9c5f', 'config', 'create_token', 'user', 'CI automation', 'success', NULL, 'POST /api_tokens', '{"params":{"name":"CI automation","authenticity_token":"SeU-fTzY2du4bMUu_4I8HgdYoWOb9kl8UbhKDZ-GzE6SSvhznYPD9LU_i4_fXo53Fnq5u8oZlsG6Du_d1NVXEA"}}', '2026-07-07 20:49:03.716835', '2026-07-07 20:49:03.716835') RETURNING "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+Redirected to http://localhost:3000/api_tokens
+↳ app/controllers/api_tokens_controller.rb:16:in 'ApiTokensController#create'
+Completed 302 Found in 17ms (ActiveRecord: 2.0ms (6 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mApiToken Count (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[36mApiToken Load (0.1ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" /*application='MultipassWebui'*/[0m
+  [1m[36mProfile Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "profiles" /*application='MultipassWebui'*/[0m
+  [1m[36mSchedule Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "schedules" /*application='MultipassWebui'*/[0m
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events" /*application='MultipassWebui'*/[0m
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" ORDER BY "events"."created_at" DESC LIMIT 5 /*application='MultipassWebui'*/[0m
+  [1m[36mApiToken Load (1.3ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" ASC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mApiToken Load (1.3ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" DESC LIMIT 1 /*application='MultipassWebui'*/[0m
+Started GET "/vms" for ::1 at 2026-07-07 21:49:33 +0100
+Processing by VmsController#index as */*
+  [1m[36mApiToken Load (0.1ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" ASC LIMIT 1000 /*action='index',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/api_token.rb:37:in 'ApiToken.find_by_raw_token'
+Redirected to http://localhost:3000/login
+↳ app/controllers/application_controller.rb:16:in 'block (2 levels) in ApplicationController#require_login'
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 17ms (ActiveRecord: 0.9ms (1 query, 0 cached) | GC: 10.5ms)
+
+
+Started GET "/vms" for ::1 at 2026-07-07 21:49:33 +0100
+Processing by VmsController#index as */*
+  [1m[36mApiToken Load (0.1ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" ASC LIMIT 1000 /*action='index',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/api_token.rb:37:in 'ApiToken.find_by_raw_token'
+Redirected to http://localhost:3000/login
+↳ app/controllers/application_controller.rb:16:in 'block (2 levels) in ApplicationController#require_login'
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/vms" for ::1 at 2026-07-07 21:49:33 +0100
+Processing by VmsController#index as */*
+Redirected to http://localhost:3000/login
+↳ app/controllers/application_controller.rb:16:in 'block (2 levels) in ApplicationController#require_login'
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api_tokens" for ::1 at 2026-07-07 21:49:41 +0100
+Processing by ApiTokensController#create as */*
+  Parameters: {"name" => "test-script", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'd5d766d782a5d7229e48ddddd0343b290d98c8f7d9ef9550594d8367ac7b6e5a' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."id_slug" = 'tok_4fe34698084f59a9' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."name" = 'test-script' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."sha256_digest" = 'b07c2432eef5e47f4bedc0563684922683dcd88644c189d64cf7d636c507ebf7' LIMIT 1 /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Create (0.1ms)[0m  [1m[32mINSERT INTO "api_tokens" ("id_slug", "name", "prefix", "sha256_digest", "created_at", "updated_at") VALUES ('tok_4fe34698084f59a9', 'test-script', 'pgo_cc06e9b4', 'b07c2432eef5e47f4bedc0563684922683dcd88644c189d64cf7d636c507ebf7', '2026-07-07 20:49:41.598382', '2026-07-07 20:49:41.598382') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mEvent Create (0.7ms)[0m  [1m[32mINSERT INTO "events" ("id", "category", "action", "actor", "resource", "result", "detail", "endpoint", "payload", "created_at", "updated_at") VALUES ('1783457381-a297', 'config', 'create_token', 'user', 'test-script', 'success', NULL, 'POST /api_tokens', '{"params":{"name":"test-script","authenticity_token":"SeU-fTzY2du4bMUu_4I8HgdYoWOb9kl8UbhKDZ-GzE6SSvhznYPD9LU_i4_fXo53Fnq5u8oZlsG6Du_d1NVXEA"}}', '2026-07-07 20:49:41.604565', '2026-07-07 20:49:41.604565') RETURNING "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='api_tokens'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+Redirected to http://localhost:3000/api_tokens
+↳ app/controllers/api_tokens_controller.rb:16:in 'ApiTokensController#create'
+Completed 302 Found in 17ms (ActiveRecord: 2.9ms (6 queries, 0 cached) | GC: 1.6ms)
+
+
+Started GET "/vms" for ::1 at 2026-07-07 21:49:41 +0100
+Processing by VmsController#index as */*
+Redirected to http://localhost:3000/login
+↳ app/controllers/application_controller.rb:16:in 'block (2 levels) in ApplicationController#require_login'
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.5ms)
+
+
+Started GET "/vms" for ::1 at 2026-07-07 21:49:41 +0100
+Processing by VmsController#index as */*
+  [1m[36mApiToken Load (0.1ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" ASC LIMIT 1000 /*action='index',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/api_token.rb:37:in 'ApiToken.find_by_raw_token'
+Redirected to http://localhost:3000/login
+↳ app/controllers/application_controller.rb:16:in 'block (2 levels) in ApplicationController#require_login'
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/vms" for ::1 at 2026-07-07 21:49:41 +0100
+Processing by VmsController#index as JSON
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."id_slug" = 'tok_6c2a5b3dafecd2c4' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."name" = 'test-direct' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."sha256_digest" = 'bd960f3e8fd55b5ac3342979cad5d61f55f515b52d2cbd8bb75140e9cbe44f13' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Create (0.1ms)[0m  [1m[32mINSERT INTO "api_tokens" ("id_slug", "name", "prefix", "sha256_digest", "created_at", "updated_at") VALUES ('tok_6c2a5b3dafecd2c4', 'test-direct', 'pgo_8865ed80', 'bd960f3e8fd55b5ac3342979cad5d61f55f515b52d2cbd8bb75140e9cbe44f13', '2026-07-07 20:49:56.395005', '2026-07-07 20:49:56.395005') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+Started GET "/vms" for ::1 at 2026-07-07 21:49:56 +0100
+Processing by VmsController#index as JSON
+  [1m[36mApiToken Load (0.2ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" ASC LIMIT 1000 /*action='index',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/api_token.rb:37:in 'ApiToken.find_by_raw_token'
+[multipass] exec: multipass info --all --format json
+Completed 200 OK in 148ms (Views: 0.2ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 1.2ms)
+
+
+Started GET "/vms" for ::1 at 2026-07-07 21:49:56 +0100
+Processing by VmsController#index as JSON
+  [1m[36mApiToken Load (0.2ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" ASC LIMIT 1000 /*action='index',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/api_token.rb:37:in 'ApiToken.find_by_raw_token'
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+
+
