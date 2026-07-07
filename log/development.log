@@ -8639,3 +8639,689 @@ Redirected to http://localhost:3000/
 Completed 302 Found in 96ms (ActiveRecord: 4.0ms (2 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/login" for ::1 at 2026-07-07 22:13:23 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.4ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | GC: 0.0ms)
+Completed 200 OK in 25ms (Views: 11.8ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 22:13:23 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (1.8ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES ('2026-07-07 21:13:23.881593', '2026-07-08 21:13:23.878719', '::1', 'a2a58ab2da6a66ae45bacf37b616a8b475892852759fef2222706289872f4aa6', '2026-07-07 21:13:23.881593', 'curl/8.7.1') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 108ms (ActiveRecord: 4.2ms (2 queries, 0 cached) | GC: 11.7ms)
+
+
+Started GET "/vms/rootplane-hello-01" for ::1 at 2026-07-07 22:13:23 +0100
+Processing by VmsController#show as */*
+  Parameters: {"name" => "rootplane-hello-01"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'a2a58ab2da6a66ae45bacf37b616a8b475892852759fef2222706289872f4aa6' LIMIT 1 /*action='show',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+[multipass] exec: multipass info rootplane-hello-01 --format json
+  Rendering layout layouts/application.html.erb
+  Rendering vms/show.html.erb within layouts/application
+  Rendered vms/show.html.erb within layouts/application (Duration: 2.5ms | GC: 0.9ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='show',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 4.1ms | GC: 0.9ms)
+Completed 200 OK in 146ms (Views: 4.8ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/vms/rootplane-hello-01/console" for ::1 at 2026-07-07 22:13:24 +0100
+Processing by VmsController#console as */*
+  Parameters: {"name" => "rootplane-hello-01"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'a2a58ab2da6a66ae45bacf37b616a8b475892852759fef2222706289872f4aa6' LIMIT 1 /*action='console',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+[multipass] exec: multipass info rootplane-hello-01 --format json
+[terminal] spawning multipass shell rootplane-hello-01 for session bf8cbb49b88577d0bb1a9d073c89dcf0
+[terminal] spawned pid=6660
+  Rendering layout layouts/application.html.erb
+  Rendering vms/console.html.erb within layouts/application
+  Rendered vms/console.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | GC: 0.0ms)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 1.3ms)
+
+
+  
+ActionView::Template::Error (undefined method 'vm_shell_session_path' for an instance of #<Class:0x000000012902f290>)
+Caused by: NoMethodError (undefined method 'vm_shell_session_path' for an instance of #<Class:0x000000012902f290>)
+
+Information for: ActionView::Template::Error (undefined method 'vm_shell_session_path' for an instance of #<Class:0x000000012902f290>):
+    11:     <div class="flex items-center gap-3 text-xs" style="color: var(--text-secondary);">
+    12:       <span data-terminal-target="status">connecting…</span>
+    13:       <%= button_to "Close session", vm_shell_session_path(@vm.name, @session_id),
+    14:             method: :delete, form: { data: { turbo_confirm: "Kill this shell session?" } },
+    15:             class: "hover:underline", style: "color: var(--danger);" %>
+    16:     </div>
+    17:   </div>
+  
+app/views/vms/console.html.erb:14
+
+Information for cause: NoMethodError (undefined method 'vm_shell_session_path' for an instance of #<Class:0x000000012902f290>):
+  
+app/views/vms/console.html.erb:14
+Started GET "/vms/rootplane-hello-01/vnc" for ::1 at 2026-07-07 22:13:24 +0100
+Processing by VmsController#vnc as */*
+  Parameters: {"name" => "rootplane-hello-01"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'a2a58ab2da6a66ae45bacf37b616a8b475892852759fef2222706289872f4aa6' LIMIT 1 /*action='vnc',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+[multipass] exec: multipass info rootplane-hello-01 --format json
+  Rendering layout layouts/application.html.erb
+  Rendering vms/vnc.html.erb within layouts/application
+  Rendered vms/vnc.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.2ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='vnc',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | GC: 0.0ms)
+Completed 200 OK in 95ms (Views: 3.3ms | ActiveRecord: 0.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/vms/rootplane-hello-01/shell_sessions.json" for ::1 at 2026-07-07 22:13:24 +0100
+Processing by ShellSessionsController#index as JSON
+  Parameters: {"name" => "rootplane-hello-01"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'a2a58ab2da6a66ae45bacf37b616a8b475892852759fef2222706289872f4aa6' LIMIT 1 /*action='index',application='MultipassWebui',controller='shell_sessions'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+Filter chain halted as :set_vm_name rendered or redirected
+Completed 400 Bad Request in 2ms (Views: 0.2ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+[ActionCable] Broadcasting to terminal:bf8cbb49b88577d0bb1a9d073c89dcf0:output: {type: "output", data: "V2VsY29tZSB0byBVYnVudHUgMjQuMDQuNCBMVFMgKEdOVS9MaW51eCA2LjguMC0xMjQtZ2VuZXJpYyBhYXJjaDY0KQ0KDQogKiBEb2N1bWVudGF0aW9uOiAgaHR0cHM6Ly9oZWxwLnVidW50dS5jb20NCiAqIE1hbmFnZW1lbnQ6ICAgICBodHRwczovL2xhbmRzY2FwZS5jYW5vbmljYWwuY29tDQogKiBTdXBwb3J0OiAgICAgICAgaHR0cHM6Ly91YnVudHUuY29tL...
+[ActionCable] Broadcasting to terminal:bf8cbb49b88577d0bb1a9d073c89dcf0:output: {type: "output", data: "cGRhdGVzLg0KU2VlIGh0dHBzOi8vdWJ1bnR1LmNvbS9lc20gb3IgcnVuOiBzdWRvIHBybyBzdGF0dXMNCg0KDQpUaGUgbGlzdCBvZiBhdmFpbGFibGUgdXBkYXRlcyBpcyBtb3JlIHRoYW4gYSB3ZWVrIG9sZC4NClRvIGNoZWNrIGZvciBuZXcgdXBkYXRlcyBydW46IHN1ZG8gYXB0IHVwZGF0ZQ0KDQpMYXN0IGxvZ2luOiBUdWUgSnVsICA3IDIxOjA5OjU5IDIwM...
+[ActionCable] Broadcasting to terminal:bf8cbb49b88577d0bb1a9d073c89dcf0:output: {type: "output", data: "G1s/MjAwNGgbXTA7dWJ1bnR1QHJvb3RwbGFuZS1oZWxsby0wMTogfgcbWzAxOzMybXVidW50dUByb290cGxhbmUtaGVsbG8tMDEbWzAwbTobWzAxOzM0bX4bWzAwbSQg"}
+Started GET "/login" for ::1 at 2026-07-07 22:14:04 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.0ms)
+Completed 200 OK in 21ms (Views: 10.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 22:14:04 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.8ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES ('2026-07-07 21:14:05.015430', '2026-07-08 21:14:05.012581', '::1', 'd1b777334e34a64b93e3df112446db5e07adacf45994674d1554f811bd753b7f', '2026-07-07 21:14:05.015430', 'curl/8.7.1') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 106ms (ActiveRecord: 3.3ms (2 queries, 0 cached) | GC: 11.8ms)
+
+
+Started GET "/vms/rootplane-hello-01/console" for ::1 at 2026-07-07 22:14:05 +0100
+Processing by VmsController#console as */*
+  Parameters: {"name" => "rootplane-hello-01"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'd1b777334e34a64b93e3df112446db5e07adacf45994674d1554f811bd753b7f' LIMIT 1 /*action='console',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+[multipass] exec: multipass info rootplane-hello-01 --format json
+[terminal] spawning multipass shell rootplane-hello-01 for session 6e1ad4fdfcf9b3203f827c0f8bac1afc
+[terminal] spawned pid=6854
+  Rendering layout layouts/application.html.erb
+  Rendering vms/console.html.erb within layouts/application
+  Rendered vms/console.html.erb within layouts/application (Duration: 1.5ms | GC: 0.0ms)
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='console',application='MultipassWebui',controller='vms'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | GC: 0.8ms)
+Completed 200 OK in 100ms (Views: 4.9ms | ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 1.3ms)
+
+
+Started GET "/vms/rootplane-hello-01/shell_sessions" for ::1 at 2026-07-07 22:14:05 +0100
+Processing by ShellSessionsController#index as */*
+  Parameters: {"name" => "rootplane-hello-01"}
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = 'd1b777334e34a64b93e3df112446db5e07adacf45994674d1554f811bd753b7f' LIMIT 1 /*action='index',application='MultipassWebui',controller='shell_sessions'*/[0m
+  ↳ app/models/session.rb:43:in 'Session.find_valid'
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.9ms)
+
+
+[ActionCable] Broadcasting to terminal:6e1ad4fdfcf9b3203f827c0f8bac1afc:output: {type: "output", data: "V2VsY29tZSB0byBVYnVudHUgMjQuMDQuNCBMVFMgKEdOVS9MaW51eCA2LjguMC0xMjQtZ2VuZXJpYyBhYXJjaDY0KQ0KDQogKiBEb2N1bWVudGF0aW9uOiAgaHR0cHM6Ly9oZWxwLnVidW50dS5jb20NCiAqIE1hbmFnZW1lbnQ6ICAgICBodHRwczovL2xhbmRzY2FwZS5jYW5vbmljYWwuY29tDQogKiBTdXBwb3J0OiAgICAgICAgaHR0cHM6Ly91YnVudHUuY29tL...
+[ActionCable] Broadcasting to terminal:6e1ad4fdfcf9b3203f827c0f8bac1afc:output: {type: "output", data: "cGRhdGVzLg0KU2VlIGh0dHBzOi8vdWJ1bnR1LmNvbS9lc20gb3IgcnVuOiBzdWRvIHBybyBzdGF0dXMNCg0KDQpUaGUgbGlzdCBvZiBhdmFpbGFibGUgdXBkYXRlcyBpcyBtb3JlIHRoYW4gYSB3ZWVrIG9sZC4NClRvIGNoZWNrIGZvciBuZXcgdXBkYXRlcyBydW46IHN1ZG8gYXB0IHVwZGF0ZQ0KDQpMYXN0IGxvZ2luOiBUdWUgSnVsICA3IDIyOjEzOjIyIDIwM...
+[ActionCable] Broadcasting to terminal:6e1ad4fdfcf9b3203f827c0f8bac1afc:output: {type: "output", data: "G1s/MjAwNGg="}
+[ActionCable] Broadcasting to terminal:6e1ad4fdfcf9b3203f827c0f8bac1afc:output: {type: "output", data: "G10wO3VidW50dUByb290cGxhbmUtaGVsbG8tMDE6IH4HG1swMTszMm11YnVudHVAcm9vdHBsYW5lLWhlbGxvLTAxG1swMG06G1swMTszNG1+G1swMG0kIA=="}
+Started POST "/spike/terminals" for ::1 at 2026-07-07 22:14:06 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/spike/terminals"):
+  
+Started GET "/login" for ::1 at 2026-07-07 22:14:21 +0100
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.1ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 22:14:21 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.8ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES ('2026-07-07 21:14:22.052768', '2026-07-08 21:14:22.052495', '::1', 'ef3e0bbeb85e2503d660390ee0569f5dec5feca5a626f38f9058eeeb479d9a33', '2026-07-07 21:14:22.052768', 'curl/8.7.1') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 82ms (ActiveRecord: 1.0ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/vms/rootplane-hello-01/shell_sessions" for ::1 at 2026-07-07 22:14:22 +0100
+Processing by ShellSessionsController#create as */*
+  Parameters: {"name" => "rootplane-hello-01", "shell_session" => {}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.3) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.3) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.3) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.3) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.3) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.3) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.3) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.3) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack-attack (6.8.0) lib/rack/attack.rb:129:in 'Rack::Attack#call'
+rack (3.2.6) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.6) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.6) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.6) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.3) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.3) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+Started GET "/login" for ::1 at 2026-07-07 22:15:06 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 6.6ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | GC: 0.0ms)
+Completed 200 OK in 46ms (Views: 16.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 22:15:06 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.8ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES ('2026-07-07 21:15:06.885205', '2026-07-08 21:15:06.882168', '::1', 'afb3ec0c9bb2204002fc666de40ae3779476fd710ac66d277c53304687766b03', '2026-07-07 21:15:06.885205', 'curl/8.7.1') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 104ms (ActiveRecord: 3.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/vms/rootplane-hello-01/shell_sessions" for ::1 at 2026-07-07 22:15:07 +0100
+Processing by ShellSessionsController#create as */*
+  Parameters: {"name" => "rootplane-hello-01", "shell_session" => {}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.3) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.3) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.3) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.3) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.3) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.3) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.3) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.3) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack-attack (6.8.0) lib/rack/attack.rb:129:in 'Rack::Attack#call'
+rack (3.2.6) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.6) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.6) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.6) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.3) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.3) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+Started GET "/login" for ::1 at 2026-07-07 22:15:44 +0100
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 1.2ms | GC: 0.0ms)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 22:15:44 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.8ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES ('2026-07-07 21:15:44.536379', '2026-07-08 21:15:44.536092', '::1', '13d3a5d9e2e815459a9e8bb6a09877c2ef8ce514db572b8874335aaca70bc19b', '2026-07-07 21:15:44.536379', 'curl/8.7.1') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 82ms (ActiveRecord: 1.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/vms/rootplane-hello-01/shell_sessions" for ::1 at 2026-07-07 22:15:45 +0100
+Processing by ShellSessionsController#create as */*
+  Parameters: {"name" => "rootplane-hello-01", "shell_session" => {}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.3) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.3) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.3) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.3) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.3) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.3) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.3) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.3) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack-attack (6.8.0) lib/rack/attack.rb:129:in 'Rack::Attack#call'
+rack (3.2.6) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.6) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.6) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.6) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.3) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.3) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+Started GET "/login" for ::1 at 2026-07-07 22:16:19 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='MultipassWebui'*/[0m
+Processing by SessionsController#new as */*
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 3.5ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | GC: 0.0ms)
+Completed 200 OK in 22ms (Views: 11.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2026-07-07 22:16:19 +0100
+Processing by SessionsController#create as */*
+  Parameters: {"username" => "admin", "password" => "[FILTERED]", "authenticity_token" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT 1 /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/setting.rb:22:in 'Setting.current'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mSession Create (0.7ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES ('2026-07-07 21:16:20.077668', '2026-07-08 21:16:20.074777', '::1', 'e08a0aba514730b002b9362befcc425f32cb0ba40e0fdf0329cde732372cb61a', '2026-07-07 21:16:20.077668', 'curl/8.7.1') RETURNING "id", "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='sessions'*/[0m
+  ↳ app/models/session.rb:30:in 'Session.issue!'
+Redirected to http://localhost:3000/
+↳ app/controllers/sessions_controller.rb:36:in 'SessionsController#create'
+Completed 302 Found in 94ms (ActiveRecord: 3.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/vms/rootplane-hello-01/shell_sessions" for ::1 at 2026-07-07 22:16:20 +0100
+Processing by ShellSessionsController#create as */*
+  Parameters: {"name" => "rootplane-hello-01", "shell_session" => {}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.3) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.3) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.3) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.3) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.3) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.3) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.3) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.3) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack-attack (6.8.0) lib/rack/attack.rb:129:in 'Rack::Attack#call'
+rack (3.2.6) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.6) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.6) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.6) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.3) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.3) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+Started POST "/vms/rootplane-hello-01/shell_sessions" for ::1 at 2026-07-07 22:16:42 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "rootplane-hello-01", "shell_session" => {}}
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."id_slug" = 'tok_74a54f2021d4fcad' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."name" = 'spike-test' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."sha256_digest" = '7065dcc9cd033e710e4206d029750279f21f3d3c056dec80ce1a7ccaa9e8038c' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Create (0.1ms)[0m  [1m[32mINSERT INTO "api_tokens" ("created_at", "id_slug", "name", "prefix", "sha256_digest", "updated_at") VALUES ('2026-07-07 21:16:59.699222', 'tok_74a54f2021d4fcad', 'spike-test', 'pgo_dcdcbed0', '7065dcc9cd033e710e4206d029750279f21f3d3c056dec80ce1a7ccaa9e8038c', '2026-07-07 21:16:59.699222') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Load (1.2ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" DESC LIMIT 1 /*application='MultipassWebui'*/[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."id_slug" = 'tok_9ba2bbdb94ec803a' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."name" = 'spike-test-2' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "api_tokens" WHERE "api_tokens"."sha256_digest" = '41852d942d6d67145beb862303342ad8c94c9803f084769c12122a1ba75b06c9' LIMIT 1 /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mApiToken Create (0.1ms)[0m  [1m[32mINSERT INTO "api_tokens" ("created_at", "id_slug", "name", "prefix", "sha256_digest", "updated_at") VALUES ('2026-07-07 21:17:15.932662', 'tok_9ba2bbdb94ec803a', 'spike-test-2', 'pgo_a1386f55', '41852d942d6d67145beb862303342ad8c94c9803f084769c12122a1ba75b06c9', '2026-07-07 21:17:15.932662') RETURNING "id", "created_at", "updated_at" /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*application='MultipassWebui'*/[0m
+  ↳ app/models/api_token.rb:22:in 'ApiToken.issue!'
+Started POST "/vms/rootplane-hello-01/shell_sessions" for ::1 at 2026-07-07 22:17:16 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "rootplane-hello-01", "shell_session" => {}}
+  [1m[36mApiToken Load (0.1ms)[0m  [1m[34mSELECT "api_tokens".* FROM "api_tokens" ORDER BY "api_tokens"."id_slug" ASC LIMIT 1000 /*action='create',application='MultipassWebui',controller='shell_sessions'*/[0m
+  ↳ app/models/api_token.rb:37:in 'ApiToken.find_by_raw_token'
+[multipass] exec: multipass info rootplane-hello-01 --format json
+[terminal] spawning multipass shell rootplane-hello-01 for session a7ea98ce270e2a36b78f0f4d9ab70744
+[terminal] spawned pid=7792
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN immediate TRANSACTION /*action='create',application='MultipassWebui',controller='shell_sessions'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mEvent Create (1.0ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES ('1783459036-149d', 'open_shell', 'user', 'vm', '2026-07-07 21:17:16.867736', 'session a7ea98ce270e2a36b78f0f4d9ab70744', 'POST /vms/rootplane-hello-01/shell_sessions', '{"params":{"name":"rootplane-hello-01","shell_session":{}}}', 'rootplane-hello-01', 'success', '2026-07-07 21:17:16.867736') RETURNING "created_at", "updated_at" /*action='create',application='MultipassWebui',controller='shell_sessions'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT TRANSACTION /*action='create',application='MultipassWebui',controller='shell_sessions'*/[0m
+  ↳ app/models/event.rb:25:in 'Event.emit!'
+Completed 200 OK in 119ms (Views: 0.1ms | ActiveRecord: 1.6ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/cable" for ::1 at 2026-07-07 22:17:16 +0100
+Started GET "/cable" [WebSocket] for ::1 at 2026-07-07 22:17:16 +0100
+Successfully upgraded to WebSocket (REQUEST_METHOD: GET, HTTP_CONNECTION: Upgrade, HTTP_UPGRADE: websocket)
+TerminalChannel transmitting {type: "scrollback", data: ""}
+TerminalChannel is transmitting the subscription confirmation
+TerminalChannel is streaming from terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output
+TerminalChannel#receive({"data" => "ZWNobyBzcGlrZV90ZXN0XzQyCg=="})
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "ZWNobyBzcGlrZV90ZXN0XzQyDQo="}
+TerminalChannel transmitting {"type" => "output", "data" => "ZWNobyBzcGlrZV90ZXN0XzQyDQo="} (via streamed from terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output)
+Finished "/cable" [WebSocket] for ::1 at 2026-07-07 22:17:17 +0100
+TerminalChannel stopped streaming from terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "V2VsY29tZSB0byBVYnVudHUgMjQuMDQuNCBMVFMgKEdOVS9MaW51eCA2LjguMC0xMjQtZ2VuZXJpYyBhYXJjaDY0KQ0KDQogKiBEb2N1bWVudGF0aW9uOiAgaHR0cHM6Ly9oZWxwLnVidW50dS5jb20NCiAqIE1hbmFnZW1lbnQ6ICAgICBodHRwczovL2xhbmRzY2FwZS5jYW5vbmljYWwuY29tDQogKiBTdXBwb3J0OiAgICAgICAgaHR0cHM6Ly91YnVudHUuY29tL...
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "IHVwZGF0ZXMuDQpTZWUgaHR0cHM6Ly91YnVudHUuY29tL2VzbSBvciBydW46IHN1ZG8gcHJvIHN0YXR1cw0KDQoNClRoZSBsaXN0IG9mIGF2YWlsYWJsZSB1cGRhdGVzIGlzIG1vcmUgdGhhbiBhIHdlZWsgb2xkLg0KVG8gY2hlY2sgZm9yIG5ldyB1cGRhdGVzIHJ1bjogc3VkbyBhcHQgdXBkYXRlDQoNCkxhc3QgbG9naW46IFR1ZSBKdWwgIDcgMjI6MTQ6MDIgM...
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "G1s/MjAwNGg="}
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "G10wO3VidW50dUByb290cGxhbmUtaGVsbG8tMDE6IH4HG1swMTszMm11YnVudHVAcm9vdHBsYW5lLWhlbGxvLTAxG1swMG06G1swMTszNG1+G1swMG0kIGVjaG8gc3Bpa2VfdGVzdF80Mg=="}
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "DQo="}
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "G1s/MjAwNGwNc3Bpa2VfdGVzdF80Mg0K"}
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "G1s/MjAwNGg="}
+[ActionCable] Broadcasting to terminal:a7ea98ce270e2a36b78f0f4d9ab70744:output: {type: "output", data: "G10wO3VidW50dUByb290cGxhbmUtaGVsbG8tMDE6IH4HG1swMTszMm11YnVudHVAcm9vdHBsYW5lLWhlbGxvLTAxG1swMG06G1swMTszNG1+G1swMG0kIA=="}

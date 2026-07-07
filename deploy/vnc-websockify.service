@@ -1,0 +1,20 @@
+[Unit]
+Description=websockify proxy for Multipass WebUI VNC access
+After=network.target
+# Requires a running VM with VNC exposed. Edit the VM IP + port below.
+# Install: sudo cp deploy/vnc-websockify.service /etc/systemd/system/
+#          sudo systemctl enable --now vnc-websockify
+
+[Service]
+Type=simple
+# Edit these to point at your VM's IP and VNC port.
+# Default: 5900 on the agent-ready cloud-init template (Xfce + x11vnc).
+Environment=VM_IP=192.168.0.100
+Environment=VM_VNC_PORT=5900
+Environment=WS_PORT=6080
+ExecStart=/usr/bin/websockify --web /usr/share/novnc/ ${WS_PORT} ${VM_IP}:${VM_VNC_PORT}
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

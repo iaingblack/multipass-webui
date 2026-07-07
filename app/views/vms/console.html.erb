@@ -1,0 +1,23 @@
+<div class="h-screen flex flex-col" style="background-color: var(--bg-primary);">
+  <div class="flex items-center justify-between px-4 h-12 shrink-0"
+       style="background-color: var(--bg-secondary); border-bottom: 1px solid var(--border);">
+    <div class="flex items-center gap-3">
+      <%= link_to "← Back to #{@vm.name}", vm_path(@vm.name),
+            class: "text-sm hover:underline",
+            style: "color: var(--text-secondary);" %>
+      <span class="text-sm" style="color: var(--text-secondary);">|</span>
+      <span class="text-sm font-mono"><%= @vm.name %> shell</span>
+    </div>
+    <div class="flex items-center gap-3 text-xs" style="color: var(--text-secondary);">
+      <span data-terminal-target="status">connecting…</span>
+      <%= button_to "Close session", shell_session_path(@vm.name, @session_id),
+            method: :delete, form: { data: { turbo_confirm: "Kill this shell session?" } },
+            class: "hover:underline", style: "color: var(--danger);" %>
+    </div>
+  </div>
+  <div id="terminal"
+       data-controller="terminal"
+       data-terminal-vm-name-value="<%= @vm.name %>"
+       data-terminal-session-id-value="<%= @session_id %>"
+       style="flex:1; padding:8px; box-sizing:border-box;"></div>
+</div>

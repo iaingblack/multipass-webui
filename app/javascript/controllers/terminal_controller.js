@@ -18,6 +18,7 @@ export default class extends Controller {
     vmName: String,
     sessionId: String,
   }
+  static targets = [ "status" ]
 
   connect() {
     this.terminal = new Terminal({
@@ -36,6 +37,7 @@ export default class extends Controller {
     this.terminal.open(this.element)
     this.fitAddon.fit()
     this.terminal.focus()
+    this.setStatus("connecting…")
 
     // Send initial size so the PTY starts at the right winsize.
     this.sendResize()
@@ -63,10 +65,13 @@ export default class extends Controller {
       },
       {
         received: (msg) => this.handleMessage(msg),
+        connected: () => this.setStatus("connected"),
         disconnected: () => {
+          this.setStatus("disconnected")
           this.terminal.writeln("\r\n[ActionCable disconnected]")
         },
         rejected: () => {
+          this.setStatus("rejected")
           this.terminal.writeln("\r\n[Subscription rejected — session missing?]")
         },
       }
@@ -80,6 +85,10 @@ export default class extends Controller {
     window.removeEventListener("resize", this.resizeListener)
     this.subscription?.unsubscribe()
     this.terminal?.dispose()
+  }
+
+  setStatus(text) {
+    if (this.hasStatusTarget) this.statusTarget.textContent = text
   }
 
   // Private — handle inbound messages from the channel.

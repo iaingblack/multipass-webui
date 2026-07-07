@@ -18,6 +18,13 @@ Rails.application.routes.draw do
       post :clone
       get  :resource_config
       patch :resource_config, to: "vms#update_resource_config"
+
+      # Terminal sessions (Phase 3 full)
+      resources :shell_sessions, only: %i[index create destroy], param: :id
+      get :console, to: "vms#console"
+
+      # VNC (Phase 7 polish) — links out to websockify-hosted noVNC
+      get :vnc, to: "vms#vnc"
     end
     collection do
       post :start_all
@@ -40,12 +47,6 @@ Rails.application.routes.draw do
   resources :events, only: %i[index]
   resource :settings, only: %i[show update]
 
-  # Spike routes — temporary, used to prove ActionCable + PTY works.
-  # Will be removed once the real Vms::ConsoleTab is wired up.
-  get "spike", to: "spike#index"
-  post "spike/terminals", to: "spike#create_session"
-  delete "spike/terminals/:id", to: "spike#destroy_session"
-  get "spike/terminal", to: "spike#terminal", as: :spike_terminal
 
   mount ActionCable.server => "/cable"
 

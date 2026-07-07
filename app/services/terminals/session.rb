@@ -19,7 +19,7 @@ module Terminals
     SCROLLBACK_CAP = 64 * 1024 # 64 KiB, mirrors Go pty_store.go:20
     RESIZE_PREFIX_BYTE = 0x01  # 5-byte resize message: 0x01 + cols + rows (BE uint16)
 
-    attr_reader :session_id, :vm_name, :scrollback
+    attr_reader :session_id, :vm_name, :scrollback, :created_at
 
     def self.open(vm_name:, session_id:)
       sess = new(vm_name:, session_id:)
@@ -36,6 +36,13 @@ module Terminals
       SESSIONS_MUTEX.synchronize { SESSIONS.delete(session_id)&.kill }
     end
 
+    # All sessions for a given VM — used by ShellSessionsController#index.
+    def self.for_vm(vm_name)
+      SESSIONS_MUTEX.synchronize do
+        SESSIONS.select { |_id, s| s.vm_name == vm_name }
+      end
+    end
+
     def initialize(vm_name:, session_id:)
       @vm_name = vm_name
       @session_id = session_id
@@ -43,6 +50,7 @@ module Terminals
       @scrollback_mutex = Mutex.new
       @output_broadcast_name = "terminal:#{session_id}:output"
       @closed = false
+      @created_at = Time.current
     end
 
     # Spawn the PTY and start the reader thread.

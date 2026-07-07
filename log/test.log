@@ -2551,3 +2551,1167 @@ Completed 401 Unauthorized in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
   [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.5ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:17:24.383179"], ["expires_at", "2026-07-08 21:17:24.378873"], ["ip_address", "1.2.3.4"], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.383179"], ["user_agent", "test"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.1ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.4ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:17:24.387675"], ["expires_at", "2026-07-08 21:17:24.387584"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.387675"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:17:24.389146"], ["expires_at", "2026-07-08 21:17:24.389073"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.389146"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:17:24.391600"], ["expires_at", "2026-07-08 21:17:24.391526"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.391600"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" ORDER BY "sessions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Update (0.1ms)[0m  [1m[33mUPDATE "sessions" SET "expires_at" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["expires_at", "2026-07-07 20:17:24.392205"], ["updated_at", "2026-07-07 21:17:24.392316"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Destroy (0.1ms)[0m  [1m[31mDELETE FROM "sessions" WHERE "sessions"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "sessions" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started GET "/login" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 10.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:17:24.438942"], ["expires_at", "2026-07-08 21:17:24.438750"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.438942"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+Started GET "/login" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSetting Load (0.3ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO "settings" ("cloud_init_dir", "cloud_init_repo", "created_at", "listen_port", "password_digest", "playbooks_dir", "trust_proxy", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["cloud_init_dir", ""], ["cloud_init_repo", ""], ["created_at", "2026-07-07 21:17:24.448471"], ["listen_port", 3000], ["password_digest", "[FILTERED]"], ["playbooks_dir", ""], ["trust_proxy", 0], ["updated_at", "2026-07-07 21:17:24.448471"], ["username", "admin"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Update (0.1ms)[0m  [1m[33mUPDATE "settings" SET "password_digest" = ?, "updated_at" = ? WHERE "settings"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.450538"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"username" => "admin", "password" => "[FILTERED]"}
+  [1m[36mSetting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:17:24.454814"], ["expires_at", "2026-07-08 21:17:24.454713"], ["ip_address", "127.0.0.1"], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.454814"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mSession Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "sessions"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSetting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO "settings" ("cloud_init_dir", "cloud_init_repo", "created_at", "listen_port", "password_digest", "playbooks_dir", "trust_proxy", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["cloud_init_dir", ""], ["cloud_init_repo", ""], ["created_at", "2026-07-07 21:17:24.458590"], ["listen_port", 3000], ["password_digest", "[FILTERED]"], ["playbooks_dir", ""], ["trust_proxy", 0], ["updated_at", "2026-07-07 21:17:24.458590"], ["username", "admin"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Update (0.1ms)[0m  [1m[33mUPDATE "settings" SET "password_digest" = ?, "updated_at" = ? WHERE "settings"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.460459"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"username" => "admin", "password" => "[FILTERED]"}
+  [1m[36mSetting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.6ms | GC: 0.0ms)
+Completed 401 Unauthorized in 3ms (Views: 0.8ms | ActiveRecord: 0.0ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Create (0.2ms)[0m  [1m[32mINSERT INTO "settings" ("cloud_init_dir", "cloud_init_repo", "created_at", "listen_port", "password_digest", "playbooks_dir", "trust_proxy", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["cloud_init_dir", ""], ["cloud_init_repo", ""], ["created_at", "2026-07-07 21:17:24.466665"], ["listen_port", 3000], ["password_digest", "[FILTERED]"], ["playbooks_dir", ""], ["trust_proxy", 0], ["updated_at", "2026-07-07 21:17:24.466665"], ["username", "admin"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Update (0.1ms)[0m  [1m[33mUPDATE "settings" SET "password_digest" = ?, "updated_at" = ? WHERE "settings"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.468708"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "sessions"[0m
+Started POST "/login" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"username" => "admin", "password" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 401 Unauthorized in 2ms (Views: 0.6ms | ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mSession Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "sessions"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:17:24.475230"], ["expires_at", "2026-07-08 21:17:24.475118"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:17:24.475230"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" ORDER BY "sessions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started DELETE "/login" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by SessionsController#destroy as HTML
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Destroy (0.1ms)[0m  [1m[31mDELETE FROM "sessions" WHERE "sessions"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/login
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mSession Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "sessions" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started GET "/" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by HostsController#show as HTML
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started GET "/" for 127.0.0.1 at 2026-07-07 22:17:24 +0100
+Processing by HostsController#show as JSON
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+[ActiveJob] [SchedulerTickJob] [5cab479e-cf11-4353-8b0e-6b54cd046e8a] Performing SchedulerTickJob (Job ID: 5cab479e-cf11-4353-8b0e-6b54cd046e8a) from Test(default)
+[ActiveJob] [SchedulerTickJob] [5cab479e-cf11-4353-8b0e-6b54cd046e8a]   [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [5cab479e-cf11-4353-8b0e-6b54cd046e8a] Performed SchedulerTickJob (Job ID: 5cab479e-cf11-4353-8b0e-6b54cd046e8a) from Test(default) in 7.31ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.1ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:17:54.556010"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:17"], ["updated_at", "2026-07-07 21:17:54.556010"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e] Performing SchedulerTickJob (Job ID: 353100cd-92e3-4fcc-a6be-25565e13945e) from Test(default)
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e]   [1m[36mSchedule Update (0.0ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:17:54.557184"], ["updated_at", "2026-07-07 21:17:54.557866"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e]   [1m[36mEvent Create (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459074-6cbc"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:17:54.562065"], ["detail", "targets: vm-a, vm-b"], ["endpoint", nil], ["payload", nil], ["resource", "Test"], ["result", "success"], ["updated_at", "2026-07-07 21:17:54.562065"]]
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [353100cd-92e3-4fcc-a6be-25565e13945e] Performed SchedulerTickJob (Job ID: 353100cd-92e3-4fcc-a6be-25565e13945e) from Test(default) in 5.89ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:17:54.564028"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:17"], ["updated_at", "2026-07-07 21:17:54.564028"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [17dc4f83-1a06-4548-bfe9-f718a4cd0785] Performing SchedulerTickJob (Job ID: 17dc4f83-1a06-4548-bfe9-f718a4cd0785) from Test(default)
+[ActiveJob] [SchedulerTickJob] [17dc4f83-1a06-4548-bfe9-f718a4cd0785]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [17dc4f83-1a06-4548-bfe9-f718a4cd0785]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [17dc4f83-1a06-4548-bfe9-f718a4cd0785]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:17:54.564499"], ["updated_at", "2026-07-07 21:17:54.564797"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [17dc4f83-1a06-4548-bfe9-f718a4cd0785]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [17dc4f83-1a06-4548-bfe9-f718a4cd0785] Error performing SchedulerTickJob (Job ID: 17dc4f83-1a06-4548-bfe9-f718a4cd0785) from Test(default) in 0.91ms: RSpec::Mocks::MockExpectationError (#<InstanceDouble(Multipass::Client) (anonymous)> received unexpected message :start_vm with ("vm-a")):
+app/jobs/scheduler_tick_job.rb:74:in 'block in SchedulerTickJob#execute'
+app/jobs/scheduler_tick_job.rb:74:in 'Array#each'
+app/jobs/scheduler_tick_job.rb:74:in 'SchedulerTickJob#execute'
+app/jobs/scheduler_tick_job.rb:34:in 'block in SchedulerTickJob#perform'
+app/jobs/scheduler_tick_job.rb:21:in 'Array#each'
+app/jobs/scheduler_tick_job.rb:21:in 'SchedulerTickJob#perform'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:17:54.566443"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:17"], ["updated_at", "2026-07-07 21:17:54.566443"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4] Performing SchedulerTickJob (Job ID: a0081370-1fa3-477e-b63d-4261c0ad47c4) from Test(default)
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:17:54.567650"], ["updated_at", "2026-07-07 21:17:54.567934"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459074-35e6"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:17:54.568482"], ["detail", "targets: vm-a, vm-b"], ["endpoint", nil], ["payload", nil], ["resource", "Test"], ["result", "success"], ["updated_at", "2026-07-07 21:17:54.568482"]]
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [a0081370-1fa3-477e-b63d-4261c0ad47c4] Performed SchedulerTickJob (Job ID: a0081370-1fa3-477e-b63d-4261c0ad47c4) from Test(default) in 1.26ms
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-2"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:17:54.569890"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-2"], ["last_fired_at", "2026-07-07 21:17:54.569562"], ["name", "Already fired"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:17"], ["updated_at", "2026-07-07 21:17:54.569890"], ["vm_names", "[\"vm-a\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [2e99595d-eea7-42ea-a451-ae3dc0468678] Performing SchedulerTickJob (Job ID: 2e99595d-eea7-42ea-a451-ae3dc0468678) from Test(default)
+[ActiveJob] [SchedulerTickJob] [2e99595d-eea7-42ea-a451-ae3dc0468678]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [2e99595d-eea7-42ea-a451-ae3dc0468678] Performed SchedulerTickJob (Job ID: 2e99595d-eea7-42ea-a451-ae3dc0468678) from Test(default) in 0.23ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-3"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:17:54.571314"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-3"], ["last_fired_at", nil], ["name", "Partial fail"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:17"], ["updated_at", "2026-07-07 21:17:54.571314"], ["vm_names", "[\"good-vm\",\"bad-vm\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7] Performing SchedulerTickJob (Job ID: e20c0e92-f578-48e6-a77b-dcc3975c96c7) from Test(default)
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:17:54.571883"], ["updated_at", "2026-07-07 21:17:54.572172"], ["id_slug", "test-3"]]
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459074-ea93"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:17:54.572714"], ["detail", "targets: good-vm, bad-vm"], ["endpoint", nil], ["payload", nil], ["resource", "Partial fail"], ["result", "partial"], ["updated_at", "2026-07-07 21:17:54.572714"]]
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [e20c0e92-f578-48e6-a77b-dcc3975c96c7] Performed SchedulerTickJob (Job ID: e20c0e92-f578-48e6-a77b-dcc3975c96c7) from Test(default) in 1.31ms
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."action" = ? AND "events"."resource" = ? ORDER BY "events"."id" DESC LIMIT ?[0m  [["action", "start"], ["resource", "Partial fail"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started GET "/vms/--all/shell_sessions" for 127.0.0.1 at 2026-07-07 22:17:54 +0100
+Processing by ShellSessionsController#index as JSON
+  Parameters: {"name" => "--all"}
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 5ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started POST "/vms/missing-vm/shell_sessions" for 127.0.0.1 at 2026-07-07 22:17:54 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "missing-vm"}
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started POST "/vms/stopped-vm/shell_sessions" for 127.0.0.1 at 2026-07-07 22:17:54 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "stopped-vm"}
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started DELETE "/vms/some-vm/shell_sessions/deadbeef" for 127.0.0.1 at 2026-07-07 22:17:54 +0100
+Processing by ShellSessionsController#destroy as JSON
+  Parameters: {"name" => "some-vm", "id" => "deadbeef"}
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+[ActiveJob] [SchedulerTickJob] [a44f1bf3-1d68-4952-80b2-967357ada8cf] Performing SchedulerTickJob (Job ID: a44f1bf3-1d68-4952-80b2-967357ada8cf) from Test(default)
+[ActiveJob] [SchedulerTickJob] [a44f1bf3-1d68-4952-80b2-967357ada8cf]   [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [a44f1bf3-1d68-4952-80b2-967357ada8cf] Performed SchedulerTickJob (Job ID: a44f1bf3-1d68-4952-80b2-967357ada8cf) from Test(default) in 4.57ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.1ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:16.602736"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:16.602736"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1] Performing SchedulerTickJob (Job ID: 78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1) from Test(default)
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1]   [1m[36mSchedule Update (0.0ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:16.603759"], ["updated_at", "2026-07-07 21:18:16.604354"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459096-7b4a"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:18:16.608296"], ["detail", "targets: vm-a, vm-b"], ["endpoint", nil], ["payload", nil], ["resource", "Test"], ["result", "success"], ["updated_at", "2026-07-07 21:18:16.608296"]]
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1] Performed SchedulerTickJob (Job ID: 78cec7f9-1d0c-49e2-9b1a-7cda6a9f90e1) from Test(default) in 5.09ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:16.609682"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:16.609682"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0d4f9054-0358-46d0-bf60-a8e4e9bf6242] Performing SchedulerTickJob (Job ID: 0d4f9054-0358-46d0-bf60-a8e4e9bf6242) from Test(default)
+[ActiveJob] [SchedulerTickJob] [0d4f9054-0358-46d0-bf60-a8e4e9bf6242]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [0d4f9054-0358-46d0-bf60-a8e4e9bf6242]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0d4f9054-0358-46d0-bf60-a8e4e9bf6242]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:16.610130"], ["updated_at", "2026-07-07 21:18:16.610420"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [0d4f9054-0358-46d0-bf60-a8e4e9bf6242]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0d4f9054-0358-46d0-bf60-a8e4e9bf6242] Error performing SchedulerTickJob (Job ID: 0d4f9054-0358-46d0-bf60-a8e4e9bf6242) from Test(default) in 0.88ms: RSpec::Mocks::MockExpectationError (#<InstanceDouble(Multipass::Client) (anonymous)> received unexpected message :start_vm with ("vm-a")):
+app/jobs/scheduler_tick_job.rb:74:in 'block in SchedulerTickJob#execute'
+app/jobs/scheduler_tick_job.rb:74:in 'Array#each'
+app/jobs/scheduler_tick_job.rb:74:in 'SchedulerTickJob#execute'
+app/jobs/scheduler_tick_job.rb:34:in 'block in SchedulerTickJob#perform'
+app/jobs/scheduler_tick_job.rb:21:in 'Array#each'
+app/jobs/scheduler_tick_job.rb:21:in 'SchedulerTickJob#perform'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:16.612008"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:16.612008"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d] Performing SchedulerTickJob (Job ID: 2ad0066a-8e89-41c0-9629-f44799c7b54d) from Test(default)
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:16.613140"], ["updated_at", "2026-07-07 21:18:16.613429"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459096-5f6d"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:18:16.613947"], ["detail", "targets: vm-a, vm-b"], ["endpoint", nil], ["payload", nil], ["resource", "Test"], ["result", "success"], ["updated_at", "2026-07-07 21:18:16.613947"]]
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [2ad0066a-8e89-41c0-9629-f44799c7b54d] Performed SchedulerTickJob (Job ID: 2ad0066a-8e89-41c0-9629-f44799c7b54d) from Test(default) in 1.31ms
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-2"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.1ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:16.615675"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-2"], ["last_fired_at", "2026-07-07 21:18:16.615257"], ["name", "Already fired"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:16.615675"], ["vm_names", "[\"vm-a\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [b61e053f-8d6d-46a1-b6eb-b35ee67360eb] Performing SchedulerTickJob (Job ID: b61e053f-8d6d-46a1-b6eb-b35ee67360eb) from Test(default)
+[ActiveJob] [SchedulerTickJob] [b61e053f-8d6d-46a1-b6eb-b35ee67360eb]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [b61e053f-8d6d-46a1-b6eb-b35ee67360eb] Performed SchedulerTickJob (Job ID: b61e053f-8d6d-46a1-b6eb-b35ee67360eb) from Test(default) in 0.29ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-3"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.1ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:16.617550"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-3"], ["last_fired_at", nil], ["name", "Partial fail"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:16.617550"], ["vm_names", "[\"good-vm\",\"bad-vm\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092] Performing SchedulerTickJob (Job ID: f9265b89-efd8-4e30-94d9-7356823c2092) from Test(default)
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:16.618276"], ["updated_at", "2026-07-07 21:18:16.618595"], ["id_slug", "test-3"]]
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459096-08a4"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:18:16.619119"], ["detail", "targets: good-vm, bad-vm"], ["endpoint", nil], ["payload", nil], ["resource", "Partial fail"], ["result", "partial"], ["updated_at", "2026-07-07 21:18:16.619119"]]
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [f9265b89-efd8-4e30-94d9-7356823c2092] Performed SchedulerTickJob (Job ID: f9265b89-efd8-4e30-94d9-7356823c2092) from Test(default) in 1.26ms
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."action" = ? AND "events"."resource" = ? ORDER BY "events"."id" DESC LIMIT ?[0m  [["action", "start"], ["resource", "Partial fail"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:16.623255"], ["expires_at", "2026-07-07 22:18:16.620974"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:16.623255"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/vms/--all/shell_sessions" for 127.0.0.1 at 2026-07-07 22:18:16 +0100
+Processing by ShellSessionsController#index as JSON
+  Parameters: {"name" => "--all"}
+Filter chain halted as :set_vm_name rendered or redirected
+Completed 400 Bad Request in 4ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:16.653779"], ["expires_at", "2026-07-07 22:18:16.653554"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:16.653779"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/vms/missing-vm/shell_sessions" for 127.0.0.1 at 2026-07-07 22:18:16 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "missing-vm"}
+Filter chain halted as :require_running_vm rendered or redirected
+Completed 404 Not Found in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:16.658393"], ["expires_at", "2026-07-07 22:18:16.658289"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:16.658393"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/vms/stopped-vm/shell_sessions" for 127.0.0.1 at 2026-07-07 22:18:16 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "stopped-vm"}
+Filter chain halted as :require_running_vm rendered or redirected
+Completed 409 Conflict in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:16.661349"], ["expires_at", "2026-07-07 22:18:16.661268"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:16.661349"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/vms/some-vm/shell_sessions/deadbeef" for 127.0.0.1 at 2026-07-07 22:18:16 +0100
+Processing by ShellSessionsController#destroy as JSON
+  Parameters: {"name" => "some-vm", "id" => "deadbeef"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEvent Create (0.2ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459096-dd67"], ["action", "close_shell"], ["actor", "user"], ["category", "vm"], ["created_at", "2026-07-07 21:18:16.667406"], ["detail", "session deadbeef"], ["endpoint", "DELETE /vms/some-vm/shell_sessions/deadbeef"], ["payload", "{\"params\":{\"name\":\"some-vm\",\"id\":\"deadbeef\"}}"], ["resource", "some-vm"], ["result", "success"], ["updated_at", "2026-07-07 21:18:16.667406"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "schema_sha1"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+[ActiveJob] [SchedulerTickJob] [45b951dc-34d3-4271-93b2-f73ae656c545] Performing SchedulerTickJob (Job ID: 45b951dc-34d3-4271-93b2-f73ae656c545) from Test(default)
+[ActiveJob] [SchedulerTickJob] [45b951dc-34d3-4271-93b2-f73ae656c545]   [1m[36mSchedule Load (0.2ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [45b951dc-34d3-4271-93b2-f73ae656c545] Performed SchedulerTickJob (Job ID: 45b951dc-34d3-4271-93b2-f73ae656c545) from Test(default) in 4.59ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.1ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:29.740118"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:29.740118"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933] Performing SchedulerTickJob (Job ID: 0cec0eff-93e0-4d47-a1f1-30691707d933) from Test(default)
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933]   [1m[36mSchedule Update (0.0ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:29.741280"], ["updated_at", "2026-07-07 21:18:29.741957"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933]   [1m[36mEvent Create (0.3ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459109-babf"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:18:29.746787"], ["detail", "targets: vm-a, vm-b"], ["endpoint", nil], ["payload", nil], ["resource", "Test"], ["result", "success"], ["updated_at", "2026-07-07 21:18:29.746787"]]
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0cec0eff-93e0-4d47-a1f1-30691707d933] Performed SchedulerTickJob (Job ID: 0cec0eff-93e0-4d47-a1f1-30691707d933) from Test(default) in 6.37ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.1ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:29.749001"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:29.749001"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822] Performing SchedulerTickJob (Job ID: 0816f4f1-3a66-42e4-9e36-337f0852b822) from Test(default)
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:29.749609"], ["updated_at", "2026-07-07 21:18:29.749944"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459109-6360"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:18:29.750482"], ["detail", "targets: vm-a, vm-b"], ["endpoint", nil], ["payload", nil], ["resource", "Test"], ["result", "success"], ["updated_at", "2026-07-07 21:18:29.750482"]]
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [0816f4f1-3a66-42e4-9e36-337f0852b822] Performed SchedulerTickJob (Job ID: 0816f4f1-3a66-42e4-9e36-337f0852b822) from Test(default) in 1.31ms
+  [1m[36mSchedule Load (0.1ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-1"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.1ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:29.753848"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-1"], ["last_fired_at", nil], ["name", "Test"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:29.753848"], ["vm_names", "[\"vm-a\",\"vm-b\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b] Performing SchedulerTickJob (Job ID: 3cf9dceb-53cb-4863-b408-ca87eee9288b) from Test(default)
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:29.755027"], ["updated_at", "2026-07-07 21:18:29.755321"], ["id_slug", "test-1"]]
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459109-7501"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:18:29.755819"], ["detail", "targets: vm-a, vm-b"], ["endpoint", nil], ["payload", nil], ["resource", "Test"], ["result", "success"], ["updated_at", "2026-07-07 21:18:29.755819"]]
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [3cf9dceb-53cb-4863-b408-ca87eee9288b] Performed SchedulerTickJob (Job ID: 3cf9dceb-53cb-4863-b408-ca87eee9288b) from Test(default) in 1.21ms
+  [1m[36mEvent Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "events"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-2"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:29.757112"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-2"], ["last_fired_at", "2026-07-07 21:18:29.756817"], ["name", "Already fired"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:29.757112"], ["vm_names", "[\"vm-a\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [95a9826d-af1a-4f0c-8d6f-45bf952855d0] Performing SchedulerTickJob (Job ID: 95a9826d-af1a-4f0c-8d6f-45bf952855d0) from Test(default)
+[ActiveJob] [SchedulerTickJob] [95a9826d-af1a-4f0c-8d6f-45bf952855d0]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [95a9826d-af1a-4f0c-8d6f-45bf952855d0] Performed SchedulerTickJob (Job ID: 95a9826d-af1a-4f0c-8d6f-45bf952855d0) from Test(default) in 0.22ms
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSchedule Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "schedules" WHERE "schedules"."id_slug" = ? LIMIT ?[0m  [["id_slug", "test-3"], ["LIMIT", 1]]
+  [1m[36mSchedule Create (0.0ms)[0m  [1m[32mINSERT INTO "schedules" ("action", "created_at", "days", "enabled", "group_name", "id_slug", "last_fired_at", "name", "playbook", "target_mode", "time", "updated_at", "vm_names") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["action", "start"], ["created_at", "2026-07-07 21:18:29.758553"], ["days", "[2]"], ["enabled", 1], ["group_name", nil], ["id_slug", "test-3"], ["last_fired_at", nil], ["name", "Partial fail"], ["playbook", nil], ["target_mode", "vms"], ["time", "21:18"], ["updated_at", "2026-07-07 21:18:29.758553"], ["vm_names", "[\"good-vm\",\"bad-vm\"]"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df] Performing SchedulerTickJob (Job ID: c7472ac6-8fa9-451c-bd84-5c82de1a76df) from Test(default)
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df]   [1m[36mSchedule Load (0.0ms)[0m  [1m[34mSELECT "schedules".* FROM "schedules" WHERE "schedules"."enabled" = ?[0m  [["enabled", 1]]
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df]   [1m[36mSchedule Update (0.1ms)[0m  [1m[33mUPDATE "schedules" SET "last_fired_at" = ?, "updated_at" = ? WHERE "schedules"."id_slug" = ?[0m  [["last_fired_at", "2026-07-07 21:18:29.759134"], ["updated_at", "2026-07-07 21:18:29.759409"], ["id_slug", "test-3"]]
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df]   [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459109-46c6"], ["action", "start"], ["actor", "scheduler"], ["category", "schedule"], ["created_at", "2026-07-07 21:18:29.759898"], ["detail", "targets: good-vm, bad-vm"], ["endpoint", nil], ["payload", nil], ["resource", "Partial fail"], ["result", "partial"], ["updated_at", "2026-07-07 21:18:29.759898"]]
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df]   [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+[ActiveJob] [SchedulerTickJob] [c7472ac6-8fa9-451c-bd84-5c82de1a76df] Performed SchedulerTickJob (Job ID: c7472ac6-8fa9-451c-bd84-5c82de1a76df) from Test(default) in 1.16ms
+  [1m[36mEvent Load (0.1ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."action" = ? AND "events"."resource" = ? ORDER BY "events"."id" DESC LIMIT ?[0m  [["action", "start"], ["resource", "Partial fail"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.764067"], ["expires_at", "2026-07-08 21:18:29.761850"], ["ip_address", "1.2.3.4"], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.764067"], ["user_agent", "test"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.765266"], ["expires_at", "2026-07-08 21:18:29.765187"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.765266"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions"[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.766631"], ["expires_at", "2026-07-08 21:18:29.766501"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.766631"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.768595"], ["expires_at", "2026-07-08 21:18:29.768523"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.768595"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" ORDER BY "sessions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Update (0.1ms)[0m  [1m[33mUPDATE "sessions" SET "expires_at" = ?, "updated_at" = ? WHERE "sessions"."id" = ?[0m  [["expires_at", "2026-07-07 20:18:29.769177"], ["updated_at", "2026-07-07 21:18:29.769278"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" WHERE "sessions"."token_hash" = ? LIMIT ?[0m  [["token_hash", "[FILTERED]"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Destroy (0.1ms)[0m  [1m[31mDELETE FROM "sessions" WHERE "sessions"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "sessions" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started GET "/login" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 2.9ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | GC: 0.0ms)
+Completed 200 OK in 18ms (Views: 10.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.811388"], ["expires_at", "2026-07-08 21:18:29.811174"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.811388"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/login" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+Started GET "/login" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO "settings" ("cloud_init_dir", "cloud_init_repo", "created_at", "listen_port", "password_digest", "playbooks_dir", "trust_proxy", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["cloud_init_dir", ""], ["cloud_init_repo", ""], ["created_at", "2026-07-07 21:18:29.821602"], ["listen_port", 3000], ["password_digest", "[FILTERED]"], ["playbooks_dir", ""], ["trust_proxy", 0], ["updated_at", "2026-07-07 21:18:29.821602"], ["username", "admin"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Update (0.1ms)[0m  [1m[33mUPDATE "settings" SET "password_digest" = ?, "updated_at" = ? WHERE "settings"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.823682"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"username" => "admin", "password" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.828034"], ["expires_at", "2026-07-08 21:18:29.827926"], ["ip_address", "127.0.0.1"], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.828034"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/
+Completed 302 Found in 3ms (ActiveRecord: 0.2ms (2 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mSession Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "sessions"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Create (0.2ms)[0m  [1m[32mINSERT INTO "settings" ("cloud_init_dir", "cloud_init_repo", "created_at", "listen_port", "password_digest", "playbooks_dir", "trust_proxy", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["cloud_init_dir", ""], ["cloud_init_repo", ""], ["created_at", "2026-07-07 21:18:29.832192"], ["listen_port", 3000], ["password_digest", "[FILTERED]"], ["playbooks_dir", ""], ["trust_proxy", 0], ["updated_at", "2026-07-07 21:18:29.832192"], ["username", "admin"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Update (0.1ms)[0m  [1m[33mUPDATE "settings" SET "password_digest" = ?, "updated_at" = ? WHERE "settings"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.834406"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/login" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"username" => "admin", "password" => "[FILTERED]"}
+  [1m[36mSetting Load (0.1ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.3ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.5ms | GC: 0.0ms)
+Completed 401 Unauthorized in 2ms (Views: 0.7ms | ActiveRecord: 0.0ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mSetting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Create (0.1ms)[0m  [1m[32mINSERT INTO "settings" ("cloud_init_dir", "cloud_init_repo", "created_at", "listen_port", "password_digest", "playbooks_dir", "trust_proxy", "updated_at", "username") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["cloud_init_dir", ""], ["cloud_init_repo", ""], ["created_at", "2026-07-07 21:18:29.840397"], ["listen_port", 3000], ["password_digest", "[FILTERED]"], ["playbooks_dir", ""], ["trust_proxy", 0], ["updated_at", "2026-07-07 21:18:29.840397"], ["username", "admin"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSetting Update (0.1ms)[0m  [1m[33mUPDATE "settings" SET "password_digest" = ?, "updated_at" = ? WHERE "settings"."id" = ?[0m  [["password_digest", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.842291"], ["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "sessions"[0m
+Started POST "/login" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"username" => "admin", "password" => "[FILTERED]"}
+  [1m[36mSetting Load (0.0ms)[0m  [1m[34mSELECT "settings".* FROM "settings" ORDER BY "settings"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.2ms | GC: 0.0ms)
+  Rendered layout layouts/application.html.erb (Duration: 0.4ms | GC: 0.0ms)
+Completed 401 Unauthorized in 2ms (Views: 0.5ms | ActiveRecord: 0.0ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mSession Count (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "sessions"[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.846302"], ["expires_at", "2026-07-08 21:18:29.846209"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.846302"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mSession Load (0.0ms)[0m  [1m[34mSELECT "sessions".* FROM "sessions" ORDER BY "sessions"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+Started DELETE "/login" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by SessionsController#destroy as HTML
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Destroy (0.1ms)[0m  [1m[31mDELETE FROM "sessions" WHERE "sessions"."id" = ?[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/login
+Completed 302 Found in 1ms (ActiveRecord: 0.1ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mSession Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "sessions" LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started GET "/" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by HostsController#show as HTML
+Redirected to http://www.example.com/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+Started GET "/" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by HostsController#show as JSON
+Filter chain halted as :require_login rendered or redirected
+Completed 401 Unauthorized in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.2ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.853997"], ["expires_at", "2026-07-07 22:18:29.853842"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.853997"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/vms/--all/shell_sessions" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by ShellSessionsController#index as JSON
+  Parameters: {"name" => "--all"}
+Filter chain halted as :set_vm_name rendered or redirected
+Completed 400 Bad Request in 0ms (Views: 0.1ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.857731"], ["expires_at", "2026-07-07 22:18:29.857608"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.857731"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/vms/missing-vm/shell_sessions" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "missing-vm"}
+Filter chain halted as :require_running_vm rendered or redirected
+Completed 404 Not Found in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.860467"], ["expires_at", "2026-07-07 22:18:29.860390"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.860467"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started POST "/vms/stopped-vm/shell_sessions" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by ShellSessionsController#create as JSON
+  Parameters: {"name" => "stopped-vm"}
+Filter chain halted as :require_running_vm rendered or redirected
+Completed 409 Conflict in 0ms (Views: 0.0ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSession Create (0.1ms)[0m  [1m[32mINSERT INTO "sessions" ("created_at", "expires_at", "ip_address", "token_hash", "updated_at", "user_agent") VALUES (?, ?, ?, ?, ?, ?) RETURNING "id", "created_at", "updated_at"[0m  [["created_at", "2026-07-07 21:18:29.863679"], ["expires_at", "2026-07-07 22:18:29.863561"], ["ip_address", nil], ["token_hash", "[FILTERED]"], ["updated_at", "2026-07-07 21:18:29.863679"], ["user_agent", nil]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started DELETE "/vms/some-vm/shell_sessions/deadbeef" for 127.0.0.1 at 2026-07-07 22:18:29 +0100
+Processing by ShellSessionsController#destroy as JSON
+  Parameters: {"name" => "some-vm", "id" => "deadbeef"}
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mEvent Create (0.1ms)[0m  [1m[32mINSERT INTO "events" ("id", "action", "actor", "category", "created_at", "detail", "endpoint", "payload", "resource", "result", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) RETURNING "created_at", "updated_at"[0m  [["id", "1783459109-9613"], ["action", "close_shell"], ["actor", "user"], ["category", "vm"], ["created_at", "2026-07-07 21:18:29.869709"], ["detail", "session deadbeef"], ["endpoint", "DELETE /vms/some-vm/shell_sessions/deadbeef"], ["payload", "{\"params\":{\"name\":\"some-vm\",\"id\":\"deadbeef\"}}"], ["resource", "some-vm"], ["result", "success"], ["updated_at", "2026-07-07 21:18:29.869709"]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Completed 200 OK in 1ms (Views: 0.0ms | ActiveRecord: 0.2ms (1 query, 0 cached) | GC: 0.0ms)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mBEGIN deferred TRANSACTION[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TRANSACTION[0m

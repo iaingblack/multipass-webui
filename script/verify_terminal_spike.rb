@@ -21,14 +21,45 @@ require "uri"
 VM_NAME = ENV.fetch("SPIKE_VM", "rootplane-hello-01")
 
 # --- Step 1: create a session via HTTP -------------------------------
-puts "→ POST /spike/terminals vm_name=#{VM_NAME.inspect}"
-uri = URI("http://localhost:3000/spike/terminals")
-res = Net::HTTP.post_form(uri, vm_name: VM_NAME)
-unless res.code.to_i.between?(300, 399)
-  abort "  session creation failed: HTTP #{res.code} #{res.message}"
+puts "→ POST /vms/#{VM_NAME}/shell_sessions"
+uri = URI("http://localhost:3000/vms/#{VM_NAME}/shell_sessions")
+req = Net::HTTP::Post.new(uri)
+req["Content-Type"] = "application/json"
+req["Accept"] = "application/json"
+# Read session cookie + CSRF token from a saved cookie file (produced by:
+#   curl -c /tmp/cookies.txt ... login
+# ). The token is in a cookie named after Rails' CSRF form param.
+cookie_file = "/tmp/cookies.txt"
+if File.exist?(cookie_file)
+  cookie_str = File.read(cookie_file)
+  session_cookie = cookie_str.scan(/session_token\s+\S+/).first&.first
+  req["Cookie"] = "session_token=#{session_cookie.split.last};" if session_cookie
+  # CSRF token: read from the login page meta tag saved to /tmp/login.html
+  if File.exist?("/tmp/login.html")
+    csrf = File.read("/tmp/login.html").match(/csrf-token" content="([^"]+)"/)&.captures&.first
+    req["X-CSRF-Token"] = csrf if csrf
+  end
 end
-loc = res["Location"]
-session_id = URI(loc).query.split("&").map { |kv| kv.split("=") }.to_h.fetch("session_id")
+res = nil
+if ENV["SPIKE_TOKEN"]
+  # Bearer token auth — much simpler than parsing cookie files
+  req["Authorization"] = "Bearer #{ENV['SPIKE_TOKEN']}"
+  res = Net::HTTP.start(uri.host, uri.port) { |http| http.request(req) }
+else
+  # Session-cookie auth — requires /tmp/cookies.txt from a prior curl login
+  cookie_file = "/tmp/cookies.txt"
+  if File.exist?(cookie_file)
+    cookie_str = File.read(cookie_file)
+    session_cookie = cookie_str.scan(/session_token\s+\S+/).first&.first
+    req["Cookie"] = "session_token=#{session_cookie.split.last};" if session_cookie
+  end
+  res = Net::HTTP.start(uri.host, uri.port) { |http| http.request(req) }
+end
+unless res.code.to_i.between?(200, 299)
+  abort "  session creation failed: HTTP #{res.code} #{res.message}\n  body: #{res.body[0,500]}"
+end
+parsed = JSON.parse(res.body)
+session_id = parsed.fetch("id")
 puts "  session_id: #{session_id}"
 
 # --- Step 2: open WebSocket to /cable --------------------------------

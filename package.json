@@ -12,6 +12,7 @@
     "@codemirror/view": "^6.43.6",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.0",
+    "@novnc/novnc": "^1.7.0",
     "@rails/actioncable": "^8.1.300",
     "@replit/codemirror-indentation-markers": "^6.5.3",
     "@xterm/addon-fit": "^0.11.0",

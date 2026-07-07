@@ -25,8 +25,17 @@
 # Any libraries that use a connection pool or another resource pool should
 # be configured to provide at least as many connections as the number of
 # threads. This includes Active Record's `pool` parameter in `database.yml`.
-threads_count = ENV.fetch("RAILS_MAX_THREADS", 3)
+threads_count = ENV.fetch("RAILS_MAX_THREADS", 5)
 threads threads_count, threads_count
+
+# CRITICAL: single worker required for in-process PTY sessions.
+# Terminals live in the Puma process memory (Terminals::Session::SESSIONS);
+# multiple workers would break WebSocket reconnect (the session might be
+# in worker A while the new connection lands on worker B).
+# Single-worker + 5 threads is plenty for a homelab tool — same shape as
+# the original Go single-binary app.
+# To scale horizontally, switch Terminals::Session to Redis pub/sub.
+workers 0
 
 # Specifies the `port` that Puma will listen on to receive requests; default is 3000.
 port ENV.fetch("PORT", 3000)

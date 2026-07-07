@@ -1,0 +1,48 @@
+<div class="p-6 fade-in">
+  <h1 class="text-lg font-semibold mb-4">VNC — <%= @vm.name %></h1>
+
+  <div class="rounded p-4 mb-4" style="background-color: var(--bg-surface); border: 1px solid var(--border);">
+    <h2 class="text-sm font-semibold uppercase tracking-wide mb-3" style="color: var(--text-secondary);">Connection details</h2>
+    <dl class="space-y-2 text-sm">
+      <div class="flex justify-between">
+        <dt style="color: var(--text-secondary);">VM IP</dt>
+        <dd class="font-mono"><%= @vm_ip || "—" %></dd>
+      </div>
+      <div class="flex justify-between">
+        <dt style="color: var(--text-secondary);">VNC port (on VM)</dt>
+        <dd class="font-mono"><%= @vnc_port %></dd>
+      </div>
+      <div class="flex justify-between">
+        <dt style="color: var(--text-secondary);">Websockify port (on host)</dt>
+        <dd class="font-mono"><%= @websockify_port %></dd>
+      </div>
+    </dl>
+  </div>
+
+  <div class="rounded p-4 mb-4" style="background-color: rgba(59, 130, 246, 0.1); border: 1px solid var(--accent);">
+    <h2 class="text-sm font-semibold mb-2">How to enable VNC</h2>
+    <p class="text-sm mb-2">
+      VNC requires <a href="https://github.com/novnc/websockify" target="_blank" class="underline">websockify</a>
+      running on the host to bridge the WebSocket (browser) to the VM's raw VNC TCP port.
+    </p>
+    <ol class="text-sm list-decimal list-inside space-y-1">
+      <li>Install websockify: <code class="font-mono">sudo apt install websockify novnc</code> (Ubuntu)</li>
+      <li>Launch a VM with the <code class="font-mono">agent-ready</code> cloud-init profile (installs Xfce + x11vnc)</li>
+      <li>Run websockify: <code class="font-mono">websockify --web /usr/share/novnc/ <%= @websockify_port %> <%= @vm_ip %>:<%= @vnc_port %></code></li>
+      <li>Click "Open VNC client" below</li>
+    </ol>
+    <p class="text-xs mt-3" style="color: var(--text-secondary);">
+      Or use the systemd unit template at <code>deploy/vnc-websockify.service</code> —
+      edit it to point at your VM's IP, install with <code>sudo cp deploy/vnc-websockify.service /etc/systemd/system/ &amp;&amp; sudo systemctl enable --now vnc-websockify</code>.
+    </p>
+  </div>
+
+  <div class="flex gap-2">
+    <%= link_to "Open VNC client →", @websockify_url, target: "_blank",
+          class: "px-3 py-1.5 rounded text-sm",
+          style: "background-color: var(--accent); color: white;" %>
+    <%= link_to "Back to #{@vm.name}", vm_path(@vm.name),
+          class: "px-3 py-1.5 rounded text-sm",
+          style: "background-color: var(--bg-hover); color: var(--text-primary);" %>
+  </div>
+</div>

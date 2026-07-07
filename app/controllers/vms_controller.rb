@@ -3,7 +3,7 @@
 # VM management. Wraps the Multipass::Client for HTTP callers — every
 # state-changing action emits an Event row for the audit log.
 class VmsController < ApplicationController
-  before_action :set_vm_name, only: %i[show destroy start stop suspend recover clone resource_config update_resource_config]
+  before_action :set_vm_name, only: %i[show destroy start stop suspend recover clone resource_config update_resource_config console vnc]
 
   # GET /vms — JSON API
   def index
@@ -122,6 +122,37 @@ class VmsController < ApplicationController
     redirect_to host_path, notice: "Purged deleted VMs."
   rescue Multipass::Client::CommandError => e
     redirect_to host_path, alert: "Purge: #{e.message}"
+  end
+
+  # GET /vms/:name/console — full-screen terminal page.
+  # Opens its own session via the ShellSessionsController on first load.
+  def console
+    @vm = multipass.get_vm_info(@vm_name)
+    # Find an existing session for this VM, or create one
+    existing = Terminals::Session.for_vm(@vm_name).keys.first
+    @session_id = existing || begin
+      sid = SecureRandom.hex(16)
+      Terminals::Session.open(vm_name: @vm_name, session_id: sid)
+      sid
+    end
+  rescue Multipass::Client::CommandError => e
+    redirect_to vm_path(@vm_name), alert: e.message
+  end
+
+  # GET /vms/:name/vnc — VNC info page. Links out to a websockify-hosted
+  # noVNC client. websockify must run separately on the host:
+  #
+  #   websockify --web /usr/share/novnc/ 6080 <vm_ip>:<port>
+  #
+  # See deploy/vnc-websockify.service for a systemd unit template.
+  def vnc
+    @vm = multipass.get_vm_info(@vm_name)
+    @vnc_port = (params[:port] || 5900).to_i
+    @vm_ip = @vm.ipv4.first
+    @websockify_port = (params[:ws_port] || 6080).to_i
+    @websockify_url = "http://#{request.host}:#{@websockify_port}/vnc.html?host=#{request.host}&port=#{@websockify_port}&autoconnect=true"
+  rescue Multipass::Client::CommandError => e
+    redirect_to vm_path(@vm_name), alert: e.message
   end
 
   private

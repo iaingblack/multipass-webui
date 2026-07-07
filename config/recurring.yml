@@ -1,15 +1,26 @@
-# examples:
-#   periodic_cleanup:
-#     class: CleanSoftDeletedRecordsJob
-#     queue: background
-#     args: [ 1000, { batch_size: 500 } ]
-#     schedule: every hour
-#   periodic_cleanup_with_command:
-#     command: "SoftDeletedRecord.due.delete_all"
-#     priority: 2
-#     schedule: at 5am every day
+# SolidQueue recurring schedules. Production-only by default; to enable
+# in development, copy the production: block to a development: block.
+#
+# Schedule syntax: https://github.com/solidqueueio/solid_queue#recurring-tasks
 
 production:
+  # Scheduler tick — every 30 seconds. Matches Go's scheduler.go 30s ticker.
+  scheduler_tick:
+    class: SchedulerTickJob
+    schedule: every 30 seconds
+
+  # Terminal session reaper — every minute. Kills sessions idle > 30 min.
+  # Matches Go's pty_store.go reaperInterval.
+  reap_idle_terminals:
+    class: Terminals::ReapIdleSessionsJob
+    schedule: every minute
+
+  # Session token sweep — every 5 minutes. Deletes expired sessions.
+  sweep_sessions:
+    class: Sessions::SweepSessionsJob
+    schedule: every 5 minutes
+
+  # Built-in: clear finished SolidQueue jobs hourly.
   clear_solid_queue_finished_jobs:
     command: "SolidQueue::Job.clear_finished_in_batches(sleep_between_batches: 0.3)"
     schedule: every hour at minute 12
